@@ -12,9 +12,9 @@ package cinemacentral.eoi.servicios;
 		private static Conexion instancia;
 	    private Connection connection;
 	    //private String url = "jdbc:mysql://db4free.net:3306/hdbcrud?serverTimezone=UTC";
-	    private String url = "jdbc:mysql://localhost:3306/empresa?serverTimezone=UTC";
-	    private String username = "josecgra";
-	    private String password = "123";
+	    private String url = "jdbc:mysql://localhost:3306/cinema?serverTimezone=UTC";
+	    private String username = "root";
+	    private String password = "1234";
 
 	    private Conexion() throws SQLException {
 	        try {

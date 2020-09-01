@@ -1,0 +1,7 @@
+cinemacentral/eoi/modelo/Usuario.class
+cinemacentral/eoi/modelo/UsuarioDAO.class
+cinemacentral/eoi/servicios/Conexion.class
+cinemacentral/eoi/controlador/Login.class
+cinemacentral/eoi/controlador/Controlador.class
+cinemacentral/eoi/modelo/Peli.class
+cinemacentral/eoi/modelo/PeliDAO.class

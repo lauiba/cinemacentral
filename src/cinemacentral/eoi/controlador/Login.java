@@ -3,27 +3,28 @@ package cinemacentral.eoi.controlador;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import cinemacentral.eoi.modelo.Peli;
-import cinemacentral.eoi.modelo.PeliDAO;
-
+import cinemacentral.eoi.modelo.Usuario;
+import cinemacentral.eoi.modelo.UsuarioDAO;
 
 /**
- * Servlet implementation class Controlador
+ * Servlet implementation class Login
  */
-@WebServlet("/Controlador")
-public class Controlador extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Controlador() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,32 +41,37 @@ public class Controlador extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idpeli = request.getParameter("idpeli");
-		String titulo = request.getParameter("titulo");
-		String genero = request.getParameter("genero");
-		String director = request.getParameter("director");
-		String duracion = request.getParameter("duracion");
-		String anyo = request.getParameter("anyo");
+		// instanciar un DAO 
+		// llamar a la funcion login
+		// para llamar a esa funcion voy a necesitar los datos de la vista
 		
-		//idpeli, titulo, genero, director, duracion, anyo
+		String correo = request.getParameter("correo");
+		String pass = request.getParameter("pass");
 		
-		Peli p = new Peli();
-		p.setIdpeli(idpeli);
-		p.setTitulo(titulo);
-		p.setGenero(genero); 
-		p.setDirector(director);
-		p.setDuracion(duracion);
-		p.setAño(anyo);
+		UsuarioDAO udao = new UsuarioDAO();
 		
+		String pagDest = "login.jsp";
 		
-		PeliDAO pelidao = new PeliDAO();	
 		try {
-			pelidao.altaPeli(p);
-		} catch (SQLException e) {
+			Usuario us = udao.login(correo, pass);
+			
+			if (us != null) {
+				pagDest = "home.jsp";
+				HttpSession session = request.getSession();
+				session.setAttribute("nombre", us.getNombre());
+				session.setAttribute("rol", us.getRol());
+			} else {
+				String msgerr = "Usuario o contraseña incorrectos!";
+				request.setAttribute("msgerr", msgerr);
+			}
+		} catch (SQLException us) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			us.printStackTrace();
 		}
 		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
+		dispatcher.forward(request, response);
+	
 	}
 
 }

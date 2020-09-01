@@ -7,7 +7,7 @@ public class Peli {
 	private String genero; 
 	private String director; 
 	private String duracion;
-	private String año;
+	private String aÃ±o;
 	
 	
 	public Peli() {
@@ -16,14 +16,14 @@ public class Peli {
 	}
 
 
-	public Peli(String idpeli, String titulo, String genero, String director, String duracion, String año) {
+	public Peli(String idpeli, String titulo, String genero, String director, String duracion, String aÃ±o) {
 		super();
 		this.idpeli = idpeli;
 		this.titulo = titulo;
 		this.genero = genero;
 		this.director = director;
 		this.duracion = duracion;
-		this.año = año;
+		this.aÃ±o = aÃ±o;
 	}
 
 
@@ -77,13 +77,13 @@ public class Peli {
 	}
 
 
-	public String getAño() {
-		return año;
+	public String getAÃ±o() {
+		return aÃ±o;
 	}
 
 
-	public void setAño(String año) {
-		this.año = año;
+	public void setAÃ±o(String aÃ±o) {
+		this.aÃ±o = aÃ±o;
 	}
 	
 	

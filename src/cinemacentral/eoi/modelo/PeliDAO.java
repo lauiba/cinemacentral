@@ -15,8 +15,9 @@ public class PeliDAO {
 	private ResultSet rs;
 	
 	//objeto tipo departamento "d"
+	
 	public void altaPeli(Peli p) throws SQLException {
-		String sql = "INSERT INTO peli (idpeli, titulo, genero, director, duracion, año) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO peli (idpeli, titulo, genero, director, duracion, aÃ±o) VALUES (?, ?, ?, ?, ?, ?)";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
 		

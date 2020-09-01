@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>Cinema Central</h1>
-	<form action="#" method="POST">
+	<form action="Controlador" method="POST">
 		Sofá, palomitas y Acción
 		<h2>Regístrate</h2><br>
 		<label for="Nom">Nombre</label><br>
