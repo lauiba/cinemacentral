@@ -2,12 +2,12 @@ package cinemacentral.eoi.modelo;
 
 public class Peli {
 	
-	private String idpeli; 
+	private int idpeli; 
 	private String titulo; 
 	private String genero; 
 	private String director; 
-	private String duracion;
-	private String año;
+	private int duracion;
+	private int anyo;
 	
 	
 	public Peli() {
@@ -16,23 +16,23 @@ public class Peli {
 	}
 
 
-	public Peli(String idpeli, String titulo, String genero, String director, String duracion, String año) {
+	public Peli(int idpeli, String titulo, String genero, String director, int duracion, int anyo) {
 		super();
 		this.idpeli = idpeli;
 		this.titulo = titulo;
 		this.genero = genero;
 		this.director = director;
 		this.duracion = duracion;
-		this.año = año;
+		this.anyo = anyo;
 	}
 
 
-	public String getIdpeli() {
+	public int getIdpeli() {
 		return idpeli;
 	}
 
 
-	public void setIdpeli(String idpeli) {
+	public void setIdpeli(int idpeli) {
 		this.idpeli = idpeli;
 	}
 
@@ -67,23 +67,30 @@ public class Peli {
 	}
 
 
-	public String getDuracion() {
+	public int getDuracion() {
 		return duracion;
 	}
 
 
-	public void setDuracion(String duracion) {
+	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
 
 
-	public String getAño() {
-		return año;
+	public int getAnyo() {
+		return anyo;
 	}
 
 
-	public void setAño(String año) {
-		this.año = año;
+	public void setAnyo(int anyo) {
+		this.anyo = anyo;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Peli [idpeli=" + idpeli + ", titulo=" + titulo + ", genero=" + genero + ", director=" + director
+				+ ", duracion=" + duracion + ", anyo=" + anyo + "]";
 	}
 	
 	

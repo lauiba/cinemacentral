@@ -40,12 +40,14 @@ public class Controlador extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idpeli = request.getParameter("idpeli");
+		
+		//modifcado los tipos de datos int y añadido parseint para idpeli, duracion y anyo
+		int idpeli = Integer.parseInt(request.getParameter("idpeli"));
 		String titulo = request.getParameter("titulo");
 		String genero = request.getParameter("genero");
 		String director = request.getParameter("director");
-		String duracion = request.getParameter("duracion");
-		String año = request.getParameter("año");
+		int duracion = Integer.parseInt(request.getParameter("duracion"));
+		int anyo = Integer.parseInt(request.getParameter("anyo"));
 		
 		//idpeli, titulo, genero, director, duracion, año
 		
@@ -55,7 +57,7 @@ public class Controlador extends HttpServlet {
 		p.setGenero(genero); 
 		p.setDirector(director);
 		p.setDuracion(duracion);
-		p.setAño(año);
+		p.setAnyo(anyo);
 		
 		
 		PeliDAO pelidao = new PeliDAO();	
