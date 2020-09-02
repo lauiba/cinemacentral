@@ -1,45 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="cinemacentral.eoi.servicios.Conexion" %>
+<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Home</title>
-
-<style type="text/css">
-#navegador ul{
-   list-style-type: none;
-   text-align: center;
-}
-#navegador li{
-   display: inline;
-   text-align: center;
-   margin: 0 10px 0 0;
-}
-#navegador li a {
-   padding: 2px 7px 2px 7px;
-   color: #666;
-   background-color: #eeeeee;
-   border: 1px solid #ccc;
-   text-decoration: none;
-}
-#navegador li a:hover{
-   background-color: #333333;
-   color: #ffffff;
-}
-   </style>
+	<title>Home</title>
+	<meta charset="utf-8">
 </head>
-
 <body>
-	<p style="text-align: right" >Bienvenid@ <%=session.getAttribute("nombre")%></p>
+	
+	<h2 style="text-align: right">Bienvenid@ <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%> </h2>
+	
+			<!-- Conexion con la bbdd -->		
+	<%
+		Connection conn = Conexion.getInstance().getConnection();
+		Statement st = conn.createStatement();
+		String query = "SELECT * FROM pelis";
+		ResultSet rs = st.executeQuery(query);
+	%>
+			<!-- Barra de navegacion -->
 
-<div id="navegador">
-<ul>
-<li><a href="#">Elemento 1</a></li>
-<li><a href="#">Elemento 2</a></li>
-<li><a href="#">Elemento 3</a></li>
-<li><a href="#">Elemento 4</a></li>
-</ul>
-</div>
+	<nav>	
+		<ul>
+			<li>
+				<a href="Logout" style="text-align: right">Cerrar sesión</a>
+			</li>
+		</ul>
+	</nav>
+	
+	<a href="#"></a><input type="button" name="nuevaPeli" value="Añadir peli"></a>
+	
+			<!-- Tabla de datos -->
+	<table>
+		<caption><b>Lista de películas</b></caption>
+		<tr>
+			<th>Título</th>
+			<th>Género</th>
+			<th>Director</th>
+			<th>Duración</th>
+			<th>Año</th>
+	<% if (session.getAttribute("rol").equals("Admin")) { %>
+			<th>Acciones</th>
+	<% } %>
+	</tr>
 
+		<%
+			while (rs.next()) {
+		%>
+
+		<tr>
+			<td><%=rs.getString("titulo")%></td>
+			<td><%=rs.getString("genero")%></td>
+			<td><%=rs.getString("director")%></td>
+			<td><%=rs.getString("duracion")%></td>
+			<td><%=rs.getString("anyo")%></td>
+	<% if (session.getAttribute("rol").equals("Admin")) { %>		
+			<td>ERES ADMIN</td>
+	<% } %>
+		</tr>
+
+		<%
+			}
+		%>
+	
+	</table>	
 </body>
 </html>
