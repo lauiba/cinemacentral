@@ -3,6 +3,7 @@ package cinemacentral.eoi.controlador;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,10 +47,8 @@ public class Controlador extends HttpServlet {
 		String titulo = request.getParameter("titulo");
 		String genero = request.getParameter("genero");
 		String director = request.getParameter("director");
-
 		int duracion = Integer.parseInt(request.getParameter("duracion"));
 		int anyo = Integer.parseInt(request.getParameter("anyo"));
-
 		
 		//idpeli, titulo, genero, director, duracion, anyo
 		
@@ -61,12 +60,18 @@ public class Controlador extends HttpServlet {
 		p.setDuracion(duracion);
 		p.setAnyo(anyo);
 
-
+		
+		PeliDAO pelidao = new PeliDAO();
+		//redirigir a página inicio con la lista de películas, una vez insertado la nueva película
+		String pagDest = "#";
 		
 		
-		PeliDAO pelidao = new PeliDAO();	
 		try {
 			pelidao.altaPeli(p);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
+			dispatcher.forward(request, response);
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

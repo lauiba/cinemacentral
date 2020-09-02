@@ -21,7 +21,7 @@ public class PeliDAO {
 
 	
 	public void altaPeli(Peli p) throws SQLException {
-		String sql = "INSERT INTO peli (idpeli, titulo, genero, director, duracion, año) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO pelis (idpeli, titulo, genero, director, duracion, anyo) VALUES (?, ?, ?, ?, ?, ?)";
 
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class PeliDAO {
 	
 	public void modificarPeli(Peli p) throws SQLException {
 
-		String sql = "UPDATE peli SET idpeli = ?, titulo = ?, genero = ? WHERE idpeli = ?";
+		String sql = "UPDATE pelis SET titulo = ?, genero = ?, director = ?, duracion = ?, anyo = ? WHERE idpeli = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
 		pst.setInt(1, maxIdpeli()+1);
@@ -82,7 +82,7 @@ public class PeliDAO {
 
 	public void borrarPeli(int idpeli) throws SQLException {
 
-		String sql = "DELETE FROM peli WHERE idpeli = ?";
+		String sql = "DELETE FROM pelis WHERE idpeli = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
 		pst.setInt(1, idpeli);
@@ -94,7 +94,7 @@ public class PeliDAO {
 	public Peli getPeli(int idpeli) throws SQLException {
 
 		Peli p = null;
-		String sql = "SELECT * FROM peli WHERE idpeli = ?";
+		String sql = "SELECT * FROM pelis WHERE idpeli = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
 		pst.setInt(1, idpeli);
