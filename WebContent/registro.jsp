@@ -19,8 +19,6 @@
 		<input type="text" name="Ape" maxlength="80" style="width: 240px"><br><br>
 		<label for="Pass">Contraseña</label><br>
 		<input type="password" name="Pass"><br><br>
-		<label for="tef">Teléfono</label><br>
-		<input type="tel" name="Telefono" max="9" placeholder="123 456 789" style="width: 80px"><br><br>
 		<input type="submit" name="Save" value="Guardar cambios">
 		<input type="reset" name="Borrar" value="Borrar los datos introducidos">
 	</form>
