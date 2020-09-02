@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import cinemacentral.eoi.modelo.Peli;
+
 import cinemacentral.eoi.servicios.Conexion;
-import cinemacentral.eoi.modelo.Peli;
 
 public class PeliDAO {
 
@@ -71,8 +70,8 @@ public class PeliDAO {
 		pst.setString(2, p.getTitulo());
 		pst.setString(3, p.getGenero());
 		pst.setString(4, p.getDirector());
-		pst.setInt(1, p.getDuracion());
-		pst.setInt(5, p.getAnyo());
+		pst.setInt(5, p.getDuracion());
+		pst.setInt(6, p.getAnyo());
 		
 		pst.executeUpdate();
 		

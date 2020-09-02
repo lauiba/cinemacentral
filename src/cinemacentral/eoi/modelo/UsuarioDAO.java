@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import cinemacentral.eoi.servicios.Conexion;
+import cinemacentral.eoi.modelo.Usuario;
 
 public class UsuarioDAO {
 	

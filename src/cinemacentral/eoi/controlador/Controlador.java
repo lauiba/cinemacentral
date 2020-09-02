@@ -76,13 +76,13 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-<<<<<<< HEAD
+
 		//modifcado los tipos de datos int y aï¿½adido parseint para idpeli, duracion y anyo
 		
-=======
-		//modifcado los tipos de datos int y añadido parseint para idpeli, duracion y anyo
+
+		//modifcado los tipos de datos int y aï¿½adido parseint para idpeli, duracion y anyo
 		//int idpeli = Integer.parseInt(request.getParameter("idpeli"));
->>>>>>> 59ef258f35f2f19ce45c321fe6df57d881dd20f6
+
 		String titulo = request.getParameter("titulo");
 		String genero = request.getParameter("genero");
 		String director = request.getParameter("director");
@@ -119,10 +119,10 @@ public class Controlador extends HttpServlet {
 		//idpeli, titulo, genero, director, duracion, anyo
 		
 		Peli p = new Peli();
-<<<<<<< HEAD
-=======
+
+
 		//p.setIdpeli(idpeli);
->>>>>>> 59ef258f35f2f19ce45c321fe6df57d881dd20f6
+
 		p.setTitulo(titulo);
 		p.setGenero(genero); 
 		p.setDirector(director);
@@ -131,11 +131,10 @@ public class Controlador extends HttpServlet {
 
 		
 		PeliDAO pelidao = new PeliDAO();
-<<<<<<< HEAD
+
+
 		//redirigir a pï¿½gina inicio con la lista de pelï¿½culas, una vez insertado la nueva pelï¿½cula
-=======
-		//redirigir a página inicio con la lista de películas, una vez insertado la nueva película
->>>>>>> 59ef258f35f2f19ce45c321fe6df57d881dd20f6
+
 		String pagDest = "home.jsp";
 		
 		
