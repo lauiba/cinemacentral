@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import cinemacentral.eoi.modelo.Peli;
 import cinemacentral.eoi.servicios.Conexion;
@@ -14,9 +15,10 @@ public class PeliDAO {
 	private Connection con;
 	private PreparedStatement pst;
 	private ResultSet rs;
+	private Statement st;
 	
 
-	//objeto tipo peli "p". aplicar método para  
+	//objeto tipo peli "p". aplicar mï¿½todo para  
 
 
 	
@@ -30,31 +32,30 @@ public class PeliDAO {
 		pst.setString(2, p.getTitulo());
 		pst.setString(3, p.getGenero());
 		pst.setString(4, p.getDirector());
-		pst.setInt(1, p.getDuracion());
-		pst.setInt(5, p.getAnyo());
+		pst.setInt(5, p.getDuracion());
+		pst.setInt(6, p.getAnyo());
 		
 		pst.executeUpdate();
 		
 		pst.close();
 		con.close();
 }
-	//método asignación código peli
+	//mï¿½todo asignaciï¿½n cï¿½digo peli
 	private int maxIdpeli() throws SQLException {
 		
 		int idp=0;
 		
-		String sql = "SELECT max(idpeli) FROM usuarios";
+		String sql = "SELECT max(idpeli) FROM pelis";
 		con = Conexion.getInstance().getConnection();
-		pst = con.prepareStatement(sql);
-		rs= pst.executeQuery();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		
 		
 		if (rs.next()) {
 			idp=rs.getInt(1);
 			
 		}
-			rs.close();
-			pst.close();
-			con.close();
+			
 			
 			return idp;
 		}

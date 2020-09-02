@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<title>Login</title>
-	<meta charset="utf-8">
+	<meta charset="ISO-8859-1">
 	<style>
 		p {
 		margin-top: 0px;
@@ -14,16 +14,16 @@
 </head>
 <body>
 	<p style="font-size: 40px">Cinema Central</p>
-	<p style="margin-left: 45px">Sof√°, palomitas y acci√≥n</p><br><br>
+	<p style="margin-left: 45px">Sof·, palomitas y acciÛn</p><br><br>
 	<form action="Login" method="POST">
 		<label for="correo">Correo</label><br>
 		<input type="email" name="correo" style="width: 240px" required> *<br><br>
-		<label for="pass">Contrase√±a</label><br>
+		<label for="pass">ContraseÒa</label><br>
 		<input type="password" name="pass" required> *<br>
 		<span style="color: red"><%=(request.getAttribute("msgerr") == null) ? "" : request.getAttribute("msgerr") %></span><br>
 		<input type="submit" name="Submit" value="Enviar">
-		<a href="recuperarPass.jsp"><input type="button" name="¬øHas olvi?" value="¬øHas olvidado la contrase√±a?"></a><br><br>
-		<a href="registro.jsp"><input type="button" name="Registro" value="Reg√≠strate"></a>
+		<a href="recuperarPass.jsp"><input type="button" name="øHas olvi?" value="øHas olvidado la contraseÒa?"></a><br><br>
+		<a href="registro.jsp"><input type="button" name="Registro" value="RegÌstrate"></a>
 	</form>
 </body>
 </html>
