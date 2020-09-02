@@ -86,10 +86,7 @@ public class UsuarioDAO {
 			id = rs.getInt(1);
 		}
 		
-		rs.close();
-		pst.close();
-		con.close();
-		
+			
 		return id;
 	}
 	
