@@ -17,6 +17,8 @@ public class Peli {
 
 
 	public Peli(int idpeli, String titulo, String genero, String director, int duracion, int anyo) {
+
+
 		super();
 		this.idpeli = idpeli;
 		this.titulo = titulo;
@@ -24,6 +26,7 @@ public class Peli {
 		this.director = director;
 		this.duracion = duracion;
 		this.anyo = anyo;
+
 	}
 
 
@@ -91,8 +94,8 @@ public class Peli {
 	public String toString() {
 		return "Peli [idpeli=" + idpeli + ", titulo=" + titulo + ", genero=" + genero + ", director=" + director
 				+ ", duracion=" + duracion + ", anyo=" + anyo + "]";
+
 	}
-	
 	
 	
 }

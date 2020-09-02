@@ -15,11 +15,12 @@
 <body>
 	<p style="font-size: 40px">Cinema Central</p>
 	<p style="margin-left: 45px">Sofá, palomitas y acción</p><br><br>
-	<form action="#" method="POST">
+	<form action="Login" method="POST">
 		<label for="correo">Correo</label><br>
 		<input type="email" name="correo" style="width: 240px" required> *<br><br>
 		<label for="pass">Contraseña</label><br>
-		<input type="password" name="pass" required> *<br><br>
+		<input type="password" name="pass" required> *<br>
+		<span style="color: red"><%=(request.getAttribute("msgerr") == null) ? "" : request.getAttribute("msgerr") %></span><br>
 		<input type="submit" name="Submit" value="Enviar">
 		<a href="recuperarPass.jsp"><input type="button" name="¿Has olvi?" value="¿Has olvidado la contraseña?"></a><br><br>
 		<a href="registro.jsp"><input type="button" name="Registro" value="Regístrate"></a>

@@ -15,10 +15,14 @@ public class PeliDAO {
 	private PreparedStatement pst;
 	private ResultSet rs;
 	
+
 	//objeto tipo peli "p". aplicar método para  
+
+
 	
 	public void altaPeli(Peli p) throws SQLException {
-		String sql = "INSERT INTO peli (idpeli, titulo, genero, director, duracion, anyo) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO peli (idpeli, titulo, genero, director, duracion, aÃ±o) VALUES (?, ?, ?, ?, ?, ?)";
+
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
 		
