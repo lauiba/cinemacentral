@@ -20,6 +20,7 @@
 		ResultSet rs = st.executeQuery(query);
 	%>
 			<!-- Barra de navegacion -->
+
 	<nav>	
 		<ul>
 			<li>
@@ -27,6 +28,9 @@
 			</li>
 		</ul>
 	</nav>
+	
+	<a href="#"></a><input type="button" name="nuevaPeli" value="Añadir peli"></a>
+	
 			<!-- Tabla de datos -->
 	<table>
 		<caption><b>Lista de películas</b></caption>
