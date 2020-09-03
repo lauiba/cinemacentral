@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import cinemacentral.eoi.modelo.Peli;
 import cinemacentral.eoi.servicios.Conexion;
-import cinemacentral.eoi.modelo.Peli;
+
+
 
 public class PeliDAO {
 
@@ -30,8 +30,8 @@ public class PeliDAO {
 		pst.setString(2, p.getTitulo());
 		pst.setString(3, p.getGenero());
 		pst.setString(4, p.getDirector());
-		pst.setInt(1, p.getDuracion());
-		pst.setInt(5, p.getAnyo());
+		pst.setInt(5, p.getDuracion());
+		pst.setInt(6, p.getAnyo());
 		
 		pst.executeUpdate();
 		
@@ -43,7 +43,7 @@ public class PeliDAO {
 		
 		int idp=0;
 		
-		String sql = "SELECT max(idpeli) FROM usuarios";
+		String sql = "SELECT max(idpeli) FROM pelis";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
 		rs= pst.executeQuery();
@@ -52,9 +52,6 @@ public class PeliDAO {
 			idp=rs.getInt(1);
 			
 		}
-			rs.close();
-			pst.close();
-			con.close();
 			
 			return idp;
 		}
@@ -66,12 +63,12 @@ public class PeliDAO {
 		String sql = "UPDATE pelis SET titulo = ?, genero = ?, director = ?, duracion = ?, anyo = ? WHERE idpeli = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
-		pst.setInt(1, maxIdpeli()+1);
+		pst.setInt(1, p.getIdpeli());  //solo mostrar idpeli sin posibilidad de editarlo
 		pst.setString(2, p.getTitulo());
 		pst.setString(3, p.getGenero());
 		pst.setString(4, p.getDirector());
-		pst.setInt(1, p.getDuracion());
-		pst.setInt(5, p.getAnyo());
+		pst.setInt(5, p.getDuracion());
+		pst.setInt(6, p.getAnyo());
 		
 		pst.executeUpdate();
 		
