@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ page import="cinemacentral.eoi.servicios.Conexion" %>
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<title>Home</title>
-	<meta charset="utf-8">
+	<meta charset="ISO-8859-1">
 </head>
 <body>
 	
@@ -23,24 +23,35 @@
 
 	<nav>	
 		<ul>
+		
+		<% if (session.getAttribute("rol").equals("admin")) { %>
+	
 			<li>
-				<a href="Logout" style="text-align: right">Cerrar sesiÃ³n</a>
+				<a href="listaUsuarios.jsp">Listado Usuarios</a>
+			</li>
+			
+		<% } %>
+			
+			<li>
+				<a href="Logout">Cerrar sesión</a>
 			</li>
 		</ul>
 	</nav>
+	<% if (session.getAttribute("rol").equals("admin")) { %>
+		<a href="altaPeli.jsp"><input type="button" name="alta" value="Alta película"></a>
+	<% } %>
 	
-	<a href="#"></a><input type="button" name="nuevaPeli" value="AÃ±adir peli"></a>
 	
 			<!-- Tabla de datos -->
 	<table>
-		<caption><b>Lista de pelÃ­culas</b></caption>
+		<caption><b>Lista de películas</b></caption>
 		<tr>
-			<th>TÃ­tulo</th>
-			<th>GÃ©nero</th>
+			<th>Título</th>
+			<th>Género</th>
 			<th>Director</th>
-			<th>DuraciÃ³n</th>
-			<th>AÃ±o</th>
-	<% if (session.getAttribute("rol").equals("Admin")) { %>
+			<th>Duración</th>
+			<th>Año</th>
+	<% if (session.getAttribute("rol").equals("admin")) { %>
 			<th>Acciones</th>
 	<% } %>
 	</tr>
@@ -55,9 +66,13 @@
 			<td><%=rs.getString("director")%></td>
 			<td><%=rs.getString("duracion")%></td>
 			<td><%=rs.getString("anyo")%></td>
-	<% if (session.getAttribute("rol").equals("Admin")) { %>		
-			<td>ERES ADMIN</td>
-	<% } %>
+			
+		<% if (session.getAttribute("rol").equals("admin")) { %>	
+		
+			<td><a href="Controlador?opcion=e&idpeli=<%=rs.getInt("idpeli") %>">Modificar</a>
+			<a href="Controlador?opcion=b&idpeli=<%=rs.getInt("idpeli") %>">Borrar</a></td>
+			
+		<% } %>
 		</tr>
 
 		<%

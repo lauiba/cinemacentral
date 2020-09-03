@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import cinemacentral.eoi.servicios.Conexion;
+import cinemacentral.eoi.modelo.Usuario;
 
 public class UsuarioDAO {
 	
@@ -88,6 +89,66 @@ public class UsuarioDAO {
 		
 			
 		return id;
+	}
+	
+	// Método para modificar un Usuario
+	
+	public void modificarUsu(Usuario u) throws SQLException {
+		
+		String sql = "UPDATE usuarios SET idusuario = ?, nombre = ?, apellidos = ?, correo = ?, pass = ?, rol = ? WHERE idusuario = ?";
+		con = Conexion.getInstance().getConnection();
+		pst = con.prepareStatement(sql);
+		pst.setInt(1, u.getIdusuario());
+		pst.setString(2, u.getNombre());
+		pst.setString(3, u.getApellidos());
+		pst.setString(4, u.getCorreo());
+		pst.setString(5, u.getPass());
+		pst.setString(6, u.getRol());
+				
+		pst.executeUpdate();
+		
+		pst.close();
+		con.close();
+	}
+	
+	// Método para recoger los datos de Usuario
+	
+	public Usuario getUsuario(int idusuario) throws SQLException {
+
+		Usuario u = null;
+		String sql = "SELECT * FROM usuarios WHERE idusuario = ?";
+		con = Conexion.getInstance().getConnection();
+		pst = con.prepareStatement(sql);
+		pst.setInt(1, idusuario);
+
+		rs = pst.executeQuery();
+
+		if (rs.next()) {
+			u = new Usuario();
+			u.setIdusuario(rs.getInt("idusuario"));
+			u.setNombre(rs.getString("nombre"));
+			u.setApellidos(rs.getString("apellidos"));
+			u.setCorreo(rs.getNString("correo"));
+			u.setPass(rs.getString("pass"));
+			u.setRol(rs.getString("rol"));
+			
+			
+		}
+		
+		return u;
+	}
+	
+	// Método para BORRAR los datos de Usuario
+	
+	public void borrarUsuario(int idusuario) throws SQLException {
+
+		String sql = "DELETE FROM usuarios WHERE idusuario = ?";
+		con = Conexion.getInstance().getConnection();
+		pst = con.prepareStatement(sql);
+		pst.setInt(1, idusuario);
+
+		pst.executeUpdate();
+
 	}
 	
 }
