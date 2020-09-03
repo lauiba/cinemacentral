@@ -36,6 +36,8 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// Método para Eliminar o Modificar una Película
+		
 		String opcion = request.getParameter("opcion");
 		int idpeli = Integer.parseInt(request.getParameter("idpeli"));
 		PeliDAO pDao = new PeliDAO();
@@ -67,6 +69,39 @@ public class Controlador extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
 		dispatcher.forward(request, response);
 		
+		// Método para Eliminar o Modificar un Usuario
+		
+				opcion = request.getParameter("opcion");
+				int idusuario = Integer.parseInt(request.getParameter("idusuario"));
+				UsuarioDAO uDao = new UsuarioDAO();
+				Usuario u = null;
+				
+				pagDest = "home.jsp";
+				
+				switch (opcion) {
+				case "e":
+					try {
+						u = uDao.getUsuario(idusuario);
+						request.setAttribute("idusuario", u);
+						pagDest = "modificarUsu.jsp";
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				case "b":
+					try {
+						uDao.borrarUsuario(idusuario);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				}
+				
+				dispatcher = request.getRequestDispatcher(pagDest);
+				dispatcher.forward(request, response);
+		
 		
 		
 	}
@@ -76,21 +111,8 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// Método para el ALTA de un Usuario
 
-		//modifcado los tipos de datos int y a�adido parseint para idpeli, duracion y anyo
-		
-
-		//modifcado los tipos de datos int y a�adido parseint para idpeli, duracion y anyo
-		//int idpeli = Integer.parseInt(request.getParameter("idpeli"));
-
-		String titulo = request.getParameter("titulo");
-		String genero = request.getParameter("genero");
-		String director = request.getParameter("director");
-		int duracion = Integer.parseInt(request.getParameter("duracion"));
-		int anyo = Integer.parseInt(request.getParameter("anyo"));
-		//String opcion = request.getParameter("opcion");
-		
-		//variables para registro usuario
 		 String nombre = request.getParameter("nombre");
 		 String apellidos = request.getParameter("apellidos");
 		 String correo = request.getParameter("correo");
@@ -106,22 +128,27 @@ public class Controlador extends HttpServlet {
 		 String pagDestUsuario = "login.jsp";
 		 
 		 try {
-				usuariodao.alta(u);
-				RequestDispatcher dispatcher = request.getRequestDispatcher(pagDestUsuario);
-				dispatcher.forward(request, response);
+			usuariodao.alta(u);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(pagDestUsuario);
+			dispatcher.forward(request, response);
 				
 				
-			} catch (SQLException e) {
+		} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+		}
 		 
-		//idpeli, titulo, genero, director, duracion, anyo
+		 
+		// Método para dar de ALTA una Película
+		
+		String titulo = request.getParameter("titulo");
+		String genero = request.getParameter("genero");
+		String director = request.getParameter("director");
+		int duracion = Integer.parseInt(request.getParameter("duracion"));
+		int anyo = Integer.parseInt(request.getParameter("anyo"));
+		
 		
 		Peli p = new Peli();
-
-
-		//p.setIdpeli(idpeli);
 
 		p.setTitulo(titulo);
 		p.setGenero(genero); 
@@ -131,7 +158,6 @@ public class Controlador extends HttpServlet {
 
 		
 		PeliDAO pelidao = new PeliDAO();
-
 
 		//redirigir a p�gina inicio con la lista de pel�culas, una vez insertado la nueva pel�cula
 

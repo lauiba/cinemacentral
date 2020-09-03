@@ -23,8 +23,17 @@
 
 	<nav>	
 		<ul>
+		
+		<% if (session.getAttribute("rol").equals("admin")) { %>
+	
 			<li>
-				<a href="Logout" style="text-align: right">Cerrar sesión</a>
+				<a href="listaUsuarios.jsp">Listado Usuarios</a>
+			</li>
+			
+		<% } %>
+			
+			<li>
+				<a href="Logout">Cerrar sesión</a>
 			</li>
 		</ul>
 	</nav>
@@ -57,10 +66,13 @@
 			<td><%=rs.getString("director")%></td>
 			<td><%=rs.getString("duracion")%></td>
 			<td><%=rs.getString("anyo")%></td>
-	<% if (session.getAttribute("rol").equals("admin")) { %>		
+			
+		<% if (session.getAttribute("rol").equals("admin")) { %>	
+		
 			<td><a href="Controlador?opcion=e&idpeli=<%=rs.getInt("idpeli") %>">Modificar</a>
 			<a href="Controlador?opcion=b&idpeli=<%=rs.getInt("idpeli") %>">Borrar</a></td>
-	<% } %>
+			
+		<% } %>
 		</tr>
 
 		<%
