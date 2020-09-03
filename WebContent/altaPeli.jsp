@@ -21,7 +21,7 @@
 		</ul>
 	</nav>
 	
-	<form action="Controlador" method="POST">
+	<form action="ControladorPeli" method="POST">
 		<label for="titulo">Título de la película:</label><br>
 		<input type="text" name="titulo"><br><br>
 		<label for="genero">Género:</label><br>

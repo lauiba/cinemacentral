@@ -56,8 +56,8 @@
 			<td><%=rs.getString("pass")%></td>
 			<td><%=rs.getString("rol")%></td>
 		
-			<td><a href="Controlador?opcion=e&idusuario=<%=rs.getInt("idusuario") %>">Modificar</a>
-			<a href="Controlador?opcion=b&idusuario=<%=rs.getInt("idusuario") %>">Borrar</a></td>
+			<td><a href="ControladorUsu?opcion=e&idusuario=<%=rs.getInt("idusuario") %>">Modificar</a>
+			<a href="ControladorUsu?opcion=b&idusuario=<%=rs.getInt("idusuario") %>">Borrar</a></td>
 
 		</tr>
 

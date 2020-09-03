@@ -69,8 +69,8 @@
 			
 		<% if (session.getAttribute("rol").equals("admin")) { %>	
 		
-			<td><a href="Controlador?opcion=e&idpeli=<%=rs.getInt("idpeli") %>">Modificar</a>
-			<a href="Controlador?opcion=b&idpeli=<%=rs.getInt("idpeli") %>">Borrar</a></td>
+			<td><a href="ControladorPeli?opcion=e&idpeli=<%=rs.getInt("idpeli") %>">Modificar</a>
+			<a href="ControladorPeli?opcion=b&idpeli=<%=rs.getInt("idpeli") %>">Borrar</a></td>
 			
 		<% } %>
 		</tr>

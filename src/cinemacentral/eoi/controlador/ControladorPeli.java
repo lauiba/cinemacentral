@@ -12,21 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import cinemacentral.eoi.modelo.Peli;
 import cinemacentral.eoi.modelo.PeliDAO;
-import cinemacentral.eoi.modelo.Usuario;
-import cinemacentral.eoi.modelo.UsuarioDAO;
-
 
 /**
- * Servlet implementation class Controlador
+ * Servlet implementation class ControladorPeli
  */
-@WebServlet("/Controlador")
-public class Controlador extends HttpServlet {
+@WebServlet("/ControladorPeli")
+public class ControladorPeli extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Controlador() {
+    public ControladorPeli() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,7 +41,7 @@ public class Controlador extends HttpServlet {
 		Peli p = null;
 		
 		String pagDest = "home.jsp";
-		
+				
 		switch (opcion) {
 		case "e":
 			try {
@@ -65,45 +62,9 @@ public class Controlador extends HttpServlet {
 			}
 			break;
 		}
-		
+				
 		RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
 		dispatcher.forward(request, response);
-		
-		// Método para Eliminar o Modificar un Usuario
-		
-				opcion = request.getParameter("opcion");
-				int idusuario = Integer.parseInt(request.getParameter("idusuario"));
-				UsuarioDAO uDao = new UsuarioDAO();
-				Usuario u = null;
-				
-				pagDest = "home.jsp";
-				
-				switch (opcion) {
-				case "e":
-					try {
-						u = uDao.getUsuario(idusuario);
-						request.setAttribute("idusuario", u);
-						pagDest = "modificarUsu.jsp";
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					break;
-				case "b":
-					try {
-						uDao.borrarUsuario(idusuario);
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					break;
-				}
-				
-				dispatcher = request.getRequestDispatcher(pagDest);
-				dispatcher.forward(request, response);
-		
-		
-		
 	}
 
 	/**
@@ -111,34 +72,6 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Método para el ALTA de un Usuario
-
-		 String nombre = request.getParameter("nombre");
-		 String apellidos = request.getParameter("apellidos");
-		 String correo = request.getParameter("correo");
-		 String pass = request.getParameter("pass");
-		 
-		 Usuario u = new Usuario();	
-		 u.setNombre(nombre);
-		 u.setApellidos(apellidos);
-		 u.setCorreo(correo);
-		 u.setPass(pass);
-		 
-		 UsuarioDAO usuariodao = new UsuarioDAO();
-		 String pagDestUsuario = "login.jsp";
-		 
-		 try {
-			usuariodao.alta(u);
-			RequestDispatcher dispatcher = request.getRequestDispatcher(pagDestUsuario);
-			dispatcher.forward(request, response);
-				
-				
-		} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-		}
-		 
-		 
 		// Método para dar de ALTA una Película
 		
 		String titulo = request.getParameter("titulo");
@@ -146,8 +79,9 @@ public class Controlador extends HttpServlet {
 		String director = request.getParameter("director");
 		int duracion = Integer.parseInt(request.getParameter("duracion"));
 		int anyo = Integer.parseInt(request.getParameter("anyo"));
-		
-		
+				
+		String pagDest = "home.jsp";
+				
 		Peli p = new Peli();
 
 		p.setTitulo(titulo);
@@ -156,31 +90,20 @@ public class Controlador extends HttpServlet {
 		p.setDuracion(duracion);
 		p.setAnyo(anyo);
 
-		
 		PeliDAO pelidao = new PeliDAO();
 
-		//redirigir a p�gina inicio con la lista de pel�culas, una vez insertado la nueva pel�cula
-
-		String pagDest = "home.jsp";
-		
-		
 		try {
 			pelidao.altaPeli(p);
 			RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
 			dispatcher.forward(request, response);
-			
-			
+							
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+				
 		RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
 		dispatcher.forward(request, response);
-		
 	}
-	
-	
-	
 
 }
