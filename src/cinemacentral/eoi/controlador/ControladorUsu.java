@@ -98,7 +98,7 @@ public class ControladorUsu extends HttpServlet {
 		u.setRol(rol);
 		 
 		UsuarioDAO usuariodao = new UsuarioDAO();
-		String pagDest = "home.jsp";
+		String pagDest = "login.jsp";
 		
 		try {
 			if (opcion == null) { 
