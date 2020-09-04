@@ -28,7 +28,7 @@ Peli p = (Peli) request.getAttribute("idpeli");
 	
 <h3>Modificar película</h3>
 
-	<form action="Controlador" method="POST">
+	<form action="ControladorPeli" method="POST">
 	
 		<input type="hidden" name="idpeli" value="<%=p.getIdpeli()%>" ><br><br>
 		<label for="titulo">Título de la película:</label><br>

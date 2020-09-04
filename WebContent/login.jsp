@@ -22,7 +22,7 @@
 		<input type="password" name="pass" required> *<br>
 		<span style="color: red"><%=(request.getAttribute("msgerr") == null) ? "" : request.getAttribute("msgerr") %></span><br>
 		<input type="submit" name="Submit" value="Enviar">
-		<a href="recuperarPass.jsp"><input type="button" name="¿Has olvi?" value="¿Has olvidado la contraseña?"></a><br><br>
+		<a href="olvidoPass.jsp"><input type="button" name="¿Has olvi?" value="¿Has olvidado la contraseña?"></a><br><br>
 		<a href="registro.jsp"><input type="button" name="Registro" value="Regístrate"></a>
 	</form>
 </body>

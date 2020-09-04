@@ -95,15 +95,16 @@ public class UsuarioDAO {
 	
 	public void modificarUsu(Usuario u) throws SQLException {
 		
-		String sql = "UPDATE usuarios SET idusuario = ?, nombre = ?, apellidos = ?, correo = ?, pass = ?, rol = ? WHERE idusuario = ?";
+		String sql = "UPDATE usuarios SET nombre = ?, apellidos = ?, correo = ?, pass = ?, rol = ? WHERE idusuario = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
-		pst.setInt(1, u.getIdusuario());
-		pst.setString(2, u.getNombre());
-		pst.setString(3, u.getApellidos());
-		pst.setString(4, u.getCorreo());
-		pst.setString(5, u.getPass());
-		pst.setString(6, u.getRol());
+		
+		pst.setString(1, u.getNombre());
+		pst.setString(2, u.getApellidos());
+		pst.setString(3, u.getCorreo());
+		pst.setString(4, u.getPass());
+		pst.setString(5, u.getRol());
+		pst.setInt(6, u.getIdusuario());
 				
 		pst.executeUpdate();
 		
@@ -128,7 +129,7 @@ public class UsuarioDAO {
 			u.setIdusuario(rs.getInt("idusuario"));
 			u.setNombre(rs.getString("nombre"));
 			u.setApellidos(rs.getString("apellidos"));
-			u.setCorreo(rs.getNString("correo"));
+			u.setCorreo(rs.getString("correo"));
 			u.setPass(rs.getString("pass"));
 			u.setRol(rs.getString("rol"));
 			
@@ -149,6 +150,33 @@ public class UsuarioDAO {
 
 		pst.executeUpdate();
 
+	}
+	
+	// Método para recoger los datos de Usuario
+	
+	public Usuario getPass(String correo) throws SQLException {
+
+		Usuario u = null;
+		String sql = "SELECT * FROM usuarios WHERE correo = ?";
+		con = Conexion.getInstance().getConnection();
+		pst = con.prepareStatement(sql);
+		pst.setString(1, correo);
+
+		rs = pst.executeQuery();
+
+		if (rs.next()) {
+			u = new Usuario();
+			u.setIdusuario(rs.getInt("idusuario"));
+			u.setNombre(rs.getString("nombre"));
+			u.setApellidos(rs.getString("apellidos"));
+			u.setCorreo(rs.getString("correo"));
+			u.setPass(rs.getString("pass"));
+			u.setRol(rs.getString("rol"));
+			
+			
+		}
+		
+		return u;
 	}
 	
 }
