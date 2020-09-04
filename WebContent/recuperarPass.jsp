@@ -11,12 +11,12 @@
 	<h1>Cinema Central</h1>
 	
 	<%
-		Usuario u = (Usuario) request.getAttribute("idusuario");		
+		Usuario u = (Usuario) request.getAttribute("correo");		
 	%>
 	
-	<form action="ControladorUsu" method="POST">
+	<form action="ControladorPass" method="POST">
 		<label for="Correo">Correo</label> *<br>
-		<input type="text" name="correo" maxlength="80" style="width: 240px" required><br><br>
+		<input type="text" name="correo" maxlength="80" style="width: 240px" required readonly value="<%=u.getCorreo()%>"><br><br>
 		<label for="Pass">Contraseña</label> *<br>
 		<input type="password" name="pass" required><br><br>
 <%// 	<label for="Pass">Repetir contraseña</label> *<br>	%>

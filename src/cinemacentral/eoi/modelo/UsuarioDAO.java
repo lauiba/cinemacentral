@@ -152,4 +152,31 @@ public class UsuarioDAO {
 
 	}
 	
+	// Método para recoger los datos de Usuario
+	
+	public Usuario getPass(String correo) throws SQLException {
+
+		Usuario u = null;
+		String sql = "SELECT * FROM usuarios WHERE correo = ?";
+		con = Conexion.getInstance().getConnection();
+		pst = con.prepareStatement(sql);
+		pst.setString(1, correo);
+
+		rs = pst.executeQuery();
+
+		if (rs.next()) {
+			u = new Usuario();
+			u.setIdusuario(rs.getInt("idusuario"));
+			u.setNombre(rs.getString("nombre"));
+			u.setApellidos(rs.getString("apellidos"));
+			u.setCorreo(rs.getString("correo"));
+			u.setPass(rs.getString("pass"));
+			u.setRol(rs.getString("rol"));
+			
+			
+		}
+		
+		return u;
+	}
+	
 }
