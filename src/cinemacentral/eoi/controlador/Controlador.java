@@ -36,7 +36,7 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Método para Eliminar o Modificar una Película
+		// :) Metodo para Eliminar o Modificar una Pelicula
 		
 		String opcion = request.getParameter("opcion");
 		int idpeli = Integer.parseInt(request.getParameter("idpeli"));
@@ -50,7 +50,7 @@ public class Controlador extends HttpServlet {
 			try {
 				p = pDao.getPeli(idpeli);
 				request.setAttribute("idpeli", p);
-				pagDest = "#";
+				pagDest = "modificarPeli.jsp";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -69,9 +69,9 @@ public class Controlador extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
 		dispatcher.forward(request, response);
 		
-		// Método para Eliminar o Modificar un Usuario
+		// Metodo para Eliminar o Modificar un Usuario
 		
-				opcion = request.getParameter("opcion");
+				/*opcion = request.getParameter("opcion");
 				int idusuario = Integer.parseInt(request.getParameter("idusuario"));
 				UsuarioDAO uDao = new UsuarioDAO();
 				Usuario u = null;
@@ -100,9 +100,9 @@ public class Controlador extends HttpServlet {
 				}
 				
 				dispatcher = request.getRequestDispatcher(pagDest);
-				dispatcher.forward(request, response);
+				dispatcher.forward(request, response); 
 		
-		
+		*/
 		
 	}
 
@@ -111,9 +111,9 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Método para el ALTA de un Usuario
+		// Metodo para el ALTA de un Usuario
 
-		 String nombre = request.getParameter("nombre");
+		/* String nombre = request.getParameter("nombre");
 		 String apellidos = request.getParameter("apellidos");
 		 String correo = request.getParameter("correo");
 		 String pass = request.getParameter("pass");
@@ -138,15 +138,16 @@ public class Controlador extends HttpServlet {
 				e.printStackTrace();
 		}
 		 
+		 */
 		 
-		// Método para dar de ALTA una Película
+		// :) Metodo para dar de ALTA una Pelicula
 		
 		String titulo = request.getParameter("titulo");
 		String genero = request.getParameter("genero");
 		String director = request.getParameter("director");
 		int duracion = Integer.parseInt(request.getParameter("duracion"));
 		int anyo = Integer.parseInt(request.getParameter("anyo"));
-		
+		String opcion = request.getParameter("opcion");
 		
 		Peli p = new Peli();
 
@@ -159,12 +160,30 @@ public class Controlador extends HttpServlet {
 		
 		PeliDAO pelidao = new PeliDAO();
 
-		//redirigir a p�gina inicio con la lista de pel�culas, una vez insertado la nueva pel�cula
+		//redirigir a home con la lista de peliculas, una vez insertada la nueva pelicula
 
 		String pagDest = "home.jsp";
 		
-		
+		/* modificar peli?
 		try {
+			if (opcion == null)
+				pelidao.modificarPeli(p);
+			else 
+				pelidao.altaPeli(p);
+			pagDest = "home.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
+			dispatcher.forward(request, response);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+		}
+		*/
+		
+		 
+		  try {
+		 
 			pelidao.altaPeli(p);
 			RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
 			dispatcher.forward(request, response);
