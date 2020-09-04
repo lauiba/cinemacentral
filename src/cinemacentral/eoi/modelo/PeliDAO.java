@@ -61,7 +61,6 @@ public class PeliDAO {
 			
 		}
 
-			
 			return idp;
 		}
 	
@@ -72,12 +71,13 @@ public class PeliDAO {
 		String sql = "UPDATE pelis SET titulo = ?, genero = ?, director = ?, duracion = ?, anyo = ? WHERE idpeli = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
-		pst.setInt(1, p.getIdpeli());  //solo mostrar idpeli sin posibilidad de editarlo
-		pst.setString(2, p.getTitulo());
-		pst.setString(3, p.getGenero());
-		pst.setString(4, p.getDirector());
-		pst.setInt(5, p.getDuracion());
-		pst.setInt(6, p.getAnyo());
+		pst.setString(1, p.getTitulo());
+		pst.setString(2, p.getGenero());
+		pst.setString(3, p.getDirector());
+		pst.setInt(4, p.getDuracion());
+		pst.setInt(5, p.getAnyo());
+		pst.setInt(6, p.getIdpeli());  //solo mostrar idpeli sin posibilidad de editarlo
+		//---modificado orden segun orden query
 		
 		pst.executeUpdate();
 		

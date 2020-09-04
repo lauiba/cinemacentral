@@ -58,7 +58,8 @@ public class Controlador extends HttpServlet {
 			break;
 		case "b":
 			try {
-				pDao.borrarPeli(idpeli);;
+				pDao.borrarPeli(idpeli);
+				pagDest = "home.jsp";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -148,6 +149,11 @@ public class Controlador extends HttpServlet {
 		int duracion = Integer.parseInt(request.getParameter("duracion"));
 		int anyo = Integer.parseInt(request.getParameter("anyo"));
 		String opcion = request.getParameter("opcion");
+		int idpeli = 0;
+		
+		if (null !=request.getParameter("idpeli")) {
+			idpeli =Integer.parseInt(request.getParameter("idpeli"));
+		}
 		
 		Peli p = new Peli();
 
@@ -183,11 +189,14 @@ public class Controlador extends HttpServlet {
 		
 		 
 		  try {
-		 
-			pelidao.altaPeli(p);
-			RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);
-			dispatcher.forward(request, response);
+			if(opcion==null) {
+				
+				pelidao.altaPeli(p);
+				pagDest="login.jsp";
 			
+			}else
+				pelidao.modificarPeli(p);
+				pagDest = "home.jsp";
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
