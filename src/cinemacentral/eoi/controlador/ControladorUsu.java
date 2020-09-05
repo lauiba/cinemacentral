@@ -105,10 +105,10 @@ public class ControladorUsu extends HttpServlet {
 				usuariodao.alta(u);
 				pagDest = "login.jsp";
 			 	
-			}else
+			} else {
 				usuariodao.modificarUsu(u);
 			 	pagDest = "listaUsuarios.jsp";
-				
+			}
 		} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

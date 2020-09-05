@@ -37,6 +37,13 @@ public class ControladorPeli extends HttpServlet {
 		
 		String opcion = request.getParameter("opcion");
 		int idpeli = Integer.parseInt(request.getParameter("idpeli"));
+		int idU = 0;
+		switch (opcion) {
+		case "f":
+			idU = Integer.parseInt(request.getParameter("idusuario"));	
+			
+			break;	
+		}
 		PeliDAO pDao = new PeliDAO();
 		Peli p = null;
 		
@@ -61,6 +68,14 @@ public class ControladorPeli extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		case "f":
+			try {
+				pDao.favPeli(idpeli, idU);;
+				pagDest = "fav.jsp";
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 			break;
 		}
 				

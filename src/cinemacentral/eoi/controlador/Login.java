@@ -58,6 +58,7 @@ public class Login extends HttpServlet {
 			if (us != null) {
 				pagDest = "home.jsp";
 				HttpSession session = request.getSession();
+				session.setAttribute("idusuario", us.getIdusuario());
 				session.setAttribute("nombre", us.getNombre());
 				session.setAttribute("rol", us.getRol());
 			} else {

@@ -21,7 +21,7 @@ public class UsuarioDAO {
 	public Usuario login(String correo, String pass) throws SQLException {
 		
 		Usuario u = null;
-		String sql = "SELECT nombre, correo, pass, rol FROM usuarios WHERE correo = ? AND pass = ?";
+		String sql = "SELECT idusuario, nombre, correo, pass, rol FROM usuarios WHERE correo = ? AND pass = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
 		pst.setString(1, correo);
@@ -33,6 +33,7 @@ public class UsuarioDAO {
 		
 		if (rs.next()) {
 			u = new Usuario();
+			u.setIdusuario(rs.getInt("idusuario"));
 			u.setNombre(rs.getNString("nombre"));
 			u.setCorreo(rs.getString("correo"));
 			u.setPass(rs.getString("pass"));
