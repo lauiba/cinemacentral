@@ -10,7 +10,10 @@
 </head>
 <body>
 	
-	<h2 style="text-align: right">Bienvenid@ <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%> </h2>
+	<h2 style="text-align: right">Bienvenid@ <%=session.getAttribute("nombre")%></h2>
+		<% if (session.getAttribute("rol").equals("admin")) { %> - 
+			<%=session.getAttribute("rol")%>
+		<% } %>
 	
 			<!-- Conexion con la bbdd -->		
 	<%
@@ -39,9 +42,7 @@
 	</nav>
 	<% if (session.getAttribute("rol").equals("admin")) { %>
 		<a href="altaPeli.jsp"><input type="button" name="alta" value="Alta película"></a>
-	<% } %>
-	
-	
+
 			<!-- Tabla de datos -->
 	<table>
 		<caption><b>Lista de películas</b></caption>
@@ -51,9 +52,7 @@
 			<th>Director</th>
 			<th>Duración</th>
 			<th>Año</th>
-	<% if (session.getAttribute("rol").equals("admin")) { %>
 			<th>Acciones</th>
-	<% } %>
 	</tr>
 
 		<%
@@ -66,8 +65,6 @@
 			<td><%=rs.getString("director")%></td>
 			<td><%=rs.getString("duracion")%></td>
 			<td><%=rs.getString("anyo")%></td>
-			
-		<% if (session.getAttribute("rol").equals("admin")) { %>	
 		
 			<td><a href="ControladorPeli?opcion=e&idpeli=<%=rs.getInt("idpeli") %>">Modificar</a>
 			<a href="ControladorPeli?opcion=b&idpeli=<%=rs.getInt("idpeli") %>">Borrar</a></td>
@@ -79,6 +76,25 @@
 			}
 		%>
 	
-	</table>	
+	</table>
+	
+	<% if (session.getAttribute("rol").equals("usuario")) { %>
+		
+	<table>
+		<%
+			while (rs.next()) {
+		%>
+		
+	
+		<tr>
+			<td><%=rs.getString("titulo")%></td>
+			<td><%=rs.getString("titulo")%></td>
+			<td><%=rs.getString("titulo")%></td>			
+		</tr>
+	</table>
+	
+	<% } %>
+		<% } %>
+		
 </body>
 </html>

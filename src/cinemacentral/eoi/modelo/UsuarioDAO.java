@@ -51,17 +51,20 @@ public class UsuarioDAO {
 	
 	// Generamos el método para el ALTA de un usuario
 	
-	public void alta(Usuario a) throws SQLException {
+	public void alta(Usuario u) throws SQLException {
 		
-		String sql = "INSERT INTO usuarios (idusuario, nombre, apellidos, correo, pass, rol) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO usuarios (idusuario,nombre,apellidos,correo,pass,rol) VALUES (?,?,?,?,?,?)";
+		int idusuario = maxId() + 1;
+		pst = null;
+		
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
-		pst.setInt(1, maxId() + 1);
-		pst.setString(2, a.getNombre());
-		pst.setString(3, a.getApellidos());
-		pst.setString(4, a.getCorreo());
-		pst.setString(5, a.getPass());
-		pst.setString(6, "Usuario");
+		pst.setInt(1, idusuario);
+		pst.setString(2, u.getNombre());
+		pst.setString(3, u.getApellidos());
+		pst.setString(4, u.getCorreo());
+		pst.setString(5, u.getPass());
+		pst.setString(6, "usuario");
 		
 		pst.executeUpdate();
 	
