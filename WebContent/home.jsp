@@ -11,6 +11,13 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  	<link rel="stylesheet" type="text/css" href="CSS/PagIntEstilo.css">
+ 	<script language="javascript">
+
+	function confirmar() {
+
+	return confirm("¿Estás seguro de querer eliminar esta película? Esta acción no se puede deshacer.")
+}
+</script>
 </head>
 <body>
 		
@@ -75,7 +82,7 @@
 		<% } %>		
 		<% if (session.getAttribute("rol").equals("admin")) { %>
 			<td><a href="ControladorPeli?opcion=e&idpeli=<%=rs.getInt("idpeli") %>"><span class="glyphicon glyphicon-pencil"></span></a>    
-			<a href="ControladorPeli?opcion=b&idpeli=<%=rs.getInt("idpeli") %>"><span class="glyphicon glyphicon-trash"></span></a></td>
+			<a href="ControladorPeli?opcion=b&idpeli=<%=rs.getInt("idpeli") %>" onclick="return confirmar()"><span class="glyphicon glyphicon-trash"></span></a></td>
 		
 		<% } %>
 		</tr>
