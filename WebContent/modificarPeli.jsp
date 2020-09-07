@@ -6,31 +6,46 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 	<link rel="stylesheet" type="text/css" href="CSS/PagIntEstilo.css">
 <title>Modificar Película</title>
 </head>
 <body>
 
-<h2 style="text-align: right">Bienvenid@ <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%> </h2>
-
 <% 
 Peli p = (Peli) request.getAttribute("idpeli");
 %>
-	<nav>	
-		<ul>
-			<li>
-				<a href="home.jsp">Inicio</a>
-			</li>
-			<li>
-				<a href="Logout">Cerrar sesión</a>
-			</li>
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    	<div class="navbar-header">	
+    	  <a class="navbar-brand" href="home.jsp">Cinema Central</a>
+		</div>
+			
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="home.jsp">Home</a></li>
+			<% if (session.getAttribute("rol").equals("admin")) { %>
+			<li><a href="listaUsuarios.jsp">Listado Usuarios</a></li>
+		<% } %>
+		
+			<% if (session.getAttribute("rol").equals("admin")) { %>
+			<li><a href="altaPeli.jsp">Alta Película</a></li>
+		<% } %>
+		
 		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			 <li><a href="#"><span class="glyphicon glyphicon-user"></span> <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%></a></li>
+			<li><a href="Logout"><span class="glyphicon glyphicon-log-in"></span>Cerrar sesión</a></li>
+		</ul>
+		</div>
+		
 	</nav>
 	
-<h3>Modificar película</h3>
-
 	<form action="ControladorPeli" method="POST">
-	
-		<input type="hidden" name="idpeli" value="<%=p.getIdpeli()%>" ><br><br>
+		<p class="mod">Modificar película</p>
+		<input type="hidden" name="idpeli" value="<%=p.getIdpeli()%>" >
 		<label for="titulo">Título de la película:</label><br>
 		<input type="text" name="titulo" value="<%=p.getTitulo()%>" ><br><br>
 		<label for="genero">Género:</label><br>
@@ -42,7 +57,8 @@ Peli p = (Peli) request.getAttribute("idpeli");
 		<label for="anyo">Año:</label><br>
 		<input type="number" name="anyo" value="<%=p.getAnyo()%>"><br><br>
 		<input type="hidden" name="opcion" value="e">
-		<input type="submit" name="guardar" value="Modificar">
+		<input type="submit" name="guardar" value="Modificar" class="w3-button w3-black w3-round-xxlarge">
+		<a href="home.jsp" >Cancelar</a>
 	</form>
 
 </body>

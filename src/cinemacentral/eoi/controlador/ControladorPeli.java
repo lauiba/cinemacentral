@@ -76,7 +76,7 @@ public class ControladorPeli extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
-			break;
+			break; 
 		}
 				
 		RequestDispatcher dispatcher = request.getRequestDispatcher(pagDest);

@@ -6,11 +6,13 @@
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 	<link rel="stylesheet" type="text/css" href="CSS/PagIntEstilo.css">
 <title>Listado Usuarios</title>
 </head>
 <body>
-	
-	<h2 style="text-align: right">Bienvenid@ <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%> </h2>
 	
 				<!-- Conexion con la bbdd -->		
 	<%
@@ -21,20 +23,33 @@
 	%>
 			<!-- Barra de navegacion -->
 
-	<nav>	
-		<ul>
-			<li>
-				<a href="home.jsp">Inicio</a>
-			</li>
-						
-			<li>
-				<a href="Logout">Cerrar sesión</a>
-			</li>
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    	<div class="navbar-header">	
+    	  <a class="navbar-brand" href="home.jsp">Cinema Central</a>
+		</div>
+		
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="home.jsp">Home</a></li>
+			<% if (session.getAttribute("rol").equals("admin")) { %>
+			<li><a href="listaUsuarios.jsp">Listado Usuarios</a></li>
+		<% } %>
+		
+			<% if (session.getAttribute("rol").equals("admin")) { %>
+			<li><a href="altaPeli.jsp">Alta Película</a></li>
+		<% } %>
+		
 		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			   <li><a href="#"><span class="glyphicon glyphicon-user"></span> <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%></a></li>
+			<li><a href="Logout"><span class="glyphicon glyphicon-log-in"></span>Cerrar sesión</a></li>
+		</ul>
+		</div>
+		
 	</nav>
 			
 				<!-- Tabla de datos -->
-	<table>
+	<table class="table table-striped">
 		<caption><b>Lista de Usuarios</b></caption>
 		<tr>
 			<th>Nombre</th>
@@ -56,8 +71,8 @@
 			<td><%=rs.getString("pass")%></td>
 			<td><%=rs.getString("rol")%></td>
 		
-			<td><a href="ControladorUsu?opcion=e&idusuario=<%=rs.getInt("idusuario") %>">Modificar</a>
-			<a href="ControladorUsu?opcion=b&idusuario=<%=rs.getInt("idusuario") %>">Borrar</a></td>
+			<td><a href="ControladorUsu?opcion=e&idusuario=<%=rs.getInt("idusuario") %>"> <span class="glyphicon glyphicon-pencil"></span></a>
+			<a href="ControladorUsu?opcion=b&idusuario=<%=rs.getInt("idusuario") %>"><span class="glyphicon glyphicon-trash"></span></a></td>
 
 		</tr>
 

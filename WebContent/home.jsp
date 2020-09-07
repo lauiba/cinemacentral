@@ -7,12 +7,13 @@
 <head>
 	<title>Home</title>
 	<meta charset="ISO-8859-1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 	<link rel="stylesheet" type="text/css" href="CSS/PagIntEstilo.css">
 </head>
 <body>
-	
-	<h2 style="text-align: right">Bienvenid@ <%=session.getAttribute("nombre")%></h2>
-
-	
+		
 			<!-- Conexion con la bbdd -->		
 	<%
 		Connection conn = Conexion.getInstance().getConnection();
@@ -22,28 +23,33 @@
 	%>
 			<!-- Barra de navegacion -->
 
-	<nav>	
-		<ul>
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    	<div class="navbar-header">	
+    	  <a class="navbar-brand" href="home.jsp">Cinema Central</a>
+		</div>
 		
-		<% if (session.getAttribute("rol").equals("admin")) { %>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="home.jsp">Home</a></li>
+			<% if (session.getAttribute("rol").equals("admin")) { %>
+			<li><a href="listaUsuarios.jsp">Listado Usuarios</a></li>
+			
+			<% } %>
+			
+			<% if (session.getAttribute("rol").equals("admin")) { %>
+			<li><a href="altaPeli.jsp">Alta Película</a></li>
+			<% } %>
 	
-			<li>
-				<a href="listaUsuarios.jsp">Listado Usuarios</a>
-			</li>
-			
-		<% } %>
-			
-			<li>
-				<a href="Logout">Cerrar sesión</a>
-			</li>
 		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><span class="glyphicon glyphicon-user"></span> <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%></a></li>
+			<li><a href="Logout"><span class="glyphicon glyphicon-log-in"></span>Cerrar sesión</a></li>
+		</ul>
+		</div>
 	</nav>
-	<% if (session.getAttribute("rol").equals("admin")) { %>
-		<a href="altaPeli.jsp"><input type="button" name="alta" value="Alta película"></a>
-	<% } %>	
-
-			<!-- Tabla de datos -->
-	<table>
+	
+				<!-- Tabla de datos -->
+	<table class="table table-striped">
 		<caption><b>Lista de películas</b></caption>
 		<tr>
 			<th>Título</th>
@@ -65,11 +71,11 @@
 			<td><%=rs.getString("duracion")%></td>
 			<td><%=rs.getString("anyo")%></td>
 		<% if (session.getAttribute("rol").equals("usuario")) { %>
-			<td><a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>">Agregar a favoritos</a></td>
+			<td><a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>"><span class="glyphicon glyphicon-star-empty"></span></a></td>
 		<% } %>		
 		<% if (session.getAttribute("rol").equals("admin")) { %>
-			<td><a href="ControladorPeli?opcion=e&idpeli=<%=rs.getInt("idpeli") %>">Modificar</a>    
-			<a href="ControladorPeli?opcion=b&idpeli=<%=rs.getInt("idpeli") %>">Borrar</a></td>
+			<td><a href="ControladorPeli?opcion=e&idpeli=<%=rs.getInt("idpeli") %>"><span class="glyphicon glyphicon-pencil"></span></a>    
+			<a href="ControladorPeli?opcion=b&idpeli=<%=rs.getInt("idpeli") %>"><span class="glyphicon glyphicon-trash"></span></a></td>
 		
 		<% } %>
 		</tr>
@@ -82,8 +88,8 @@
 	
 	<% if (session.getAttribute("rol").equals("usuario")) { %>
 		
-	
-		
 	<% } %>		
+	
+
 </body>
 </html>

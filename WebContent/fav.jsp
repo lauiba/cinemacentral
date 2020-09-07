@@ -15,7 +15,7 @@
 	<%
 		Connection conn = Conexion.getInstance().getConnection();
 		Statement st = conn.createStatement();
-		String query = "SELECT * FROM fav";
+		String query = "SELECT titulo, genero, director, duracion, anyo, f.idusuario FROM pelis p, usuarios u, fav f WHERE p.idpeli=f.idpeli AND u.idusuario=f.idusuario;";
 		ResultSet rs = st.executeQuery(query);
 	%>
 			<!-- Barra de navegacion -->

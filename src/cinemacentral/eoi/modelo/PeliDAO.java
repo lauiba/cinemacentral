@@ -122,7 +122,7 @@ public class PeliDAO {
 		return p;
 	}
 
-	public void favPeli(int idpeli, int idusuario) throws SQLException {
+	    public void favPeli(int idpeli, int idusuario) throws SQLException {
 		
 		String sql = "INSERT INTO fav (idpeli, idusuario) VALUES (?, ?)";
 		con = Conexion.getInstance().getConnection();

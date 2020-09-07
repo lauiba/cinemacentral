@@ -1,0 +1,107 @@
+@charset "ISO-8859-1";
+
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   top: 90%;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: right;
+}
+
+body {
+	background: url(../IMG/fondo-home-cc.jpg) no-repeat;
+	background-size: cover; 
+	background-color: #000000; 
+	}
+
+	li:hover {
+  background-color: #8B0000;
+}
+
+
+table {
+	background-color: black;
+	font-style: color: white;
+	
+}
+
+tr, th, td {
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+
+caption {
+	
+color: white;
+
+}
+
+form  {
+	background-color: black;
+	opacity: 0.98;
+	position: absolute;
+    top:30%;
+    left: 40%;           
+    margin-top: -100px;
+    margin-left: -100px;
+    padding: 16px;
+  	border-radius: 30px;
+  	background-color:black;
+  	width:250px;
+  	height:auto;
+  	
+	
+}
+
+form label {
+	color:white;
+}
+
+.reg{
+		font-family: 'Playfair Display';
+		font-size:20px;
+		text-align: left;
+		}
+		
+.mod{
+		font-family: 'Playfair Display';
+		font-size:20px;
+		text-align: left;
+		color:white;
+	
+}
+
+a {
+	color:white;
+}
+
+a:visited {
+	color:white;
+}
+
+/*
+a:hover{
+	color:yellow;
+}
+*/
+.w3-btn
+		 {width:100px; font-size: 8px; display: inline-block;}
+		 
+		 
+		 
+
+
+
+	
+
+
+
+
+
+
+  
