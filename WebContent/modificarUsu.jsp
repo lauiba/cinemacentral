@@ -55,11 +55,16 @@
 		<input type="text" name="correo" value="<%=u.getCorreo()%>"><br><br>
 		<label for="pass">Contraseña:</label><br>
 		<input type="text" name="pass" value="<%=u.getPass()%>"><br><br>
+		<% if (session.getAttribute("rol").equals("admin")) { %>
 		<label for="rol">Rol:</label><br>
 		<input type="text" name="rol" value="<%=u.getRol()%>"><br><br>
+		<% } %>
+		<% if (session.getAttribute("rol").equals("usuario")) { %>
+		<input type="hidden" name="rol" value="<%=u.getRol()%>">
+		<% } %>
 		<input type="hidden" name="opcion" value="e">
 		<input type="submit" name="modificar" value="Modificar" class="w3-button w3-black w3-round-xxlarge">
-		<a href="listaUsuarios.jsp" >Cancelar</a>
+		<a href="home.jsp" >Cancelar</a>
 	</form>
 	
 </body>

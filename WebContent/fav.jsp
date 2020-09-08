@@ -14,8 +14,8 @@
 			<!-- Conexion con la bbdd -->		
 	<%
 		Connection conn = Conexion.getInstance().getConnection();
-		Statement st = conn.createStatement();
-		String query = "SELECT titulo, genero, director, duracion, anyo, f.idusuario FROM pelis p, usuarios u, fav f WHERE p.idpeli=f.idpeli AND u.idusuario=f.idusuario;";
+		Statement st = conn.createStatement();	
+	 	String query = "SELECT titulo FROM pelis WHERE idpeli IN (SELECT idpeli FROM fav WHERE idusuario = " + session.getAttribute("idusuario") + ")";
 		ResultSet rs = st.executeQuery(query);
 	%>
 			<!-- Barra de navegacion -->
@@ -24,11 +24,7 @@
 	<table>
 		<caption><b>Lista de películas</b></caption>
 		<tr>
-			<th>Título</th>
-			<th>Género</th>
-			<th>Director</th>
-			<th>Duración</th>
-			<th>Año</th>				
+			<th>Título</th>				
 		</tr>
 
 		<%
@@ -36,7 +32,7 @@
 		%>
 
 		<tr>
-			<td><%=rs.getString("idpeli")%></td>
+			<td><%=rs.getString("titulo")%></td>
 					
 		</tr>		
 	<% } %>	

@@ -107,7 +107,7 @@ public class ControladorUsu extends HttpServlet {
 			 	
 			} else {
 				usuariodao.modificarUsu(u);
-			 	pagDest = "listaUsuarios.jsp";
+			 	pagDest = "home.jsp";
 			}
 		} catch (SQLException e) {
 				// TODO Auto-generated catch block

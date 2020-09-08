@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import cinemacentral.eoi.servicios.Conexion;
-import cinemacentral.eoi.modelo.Usuario;
 
 public class UsuarioDAO {
 	
@@ -14,6 +13,7 @@ public class UsuarioDAO {
 	
 	private Connection con;
 	private PreparedStatement pst;
+	private PreparedStatement pst1;
 	private ResultSet rs;
 	
 	// Generamos el método para el LOGIN de un usuario
@@ -147,12 +147,16 @@ public class UsuarioDAO {
 	
 	public void borrarUsuario(int idusuario) throws SQLException {
 
-		String sql = "DELETE FROM usuarios WHERE idusuario = ?";
+		String sql = "DELETE FROM fav WHERE idusuario = ?";
+		String sql1 = "DELETE FROM usuarios WHERE idusuario = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
+		pst1 = con.prepareStatement(sql1);
 		pst.setInt(1, idusuario);
-
+		pst1.setInt(1, idusuario);
+	
 		pst.executeUpdate();
+		pst1.executeUpdate();
 
 	}
 	

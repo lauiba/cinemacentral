@@ -19,6 +19,7 @@ public class PeliDAO {
 
 	private Connection con;
 	private PreparedStatement pst;
+	private PreparedStatement pst1;
 	private ResultSet rs;
 	private Statement st;
 	
@@ -88,12 +89,16 @@ public class PeliDAO {
 
 	public void borrarPeli(int idpeli) throws SQLException {
 
-		String sql = "DELETE FROM pelis WHERE idpeli = ?";
+		String sql = "DELETE FROM fav WHERE idpeli = ?";
+		String sql1 = "DELETE FROM pelis WHERE idpeli = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
+		pst1 = con.prepareStatement(sql1);
 		pst.setInt(1, idpeli);
+		pst1.setInt(1, idpeli);
 
 		pst.executeUpdate();
+		pst1.executeUpdate();
 
 	}
 

@@ -68,10 +68,11 @@ public class ControladorPeli extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			break;
 		case "f":
 			try {
 				pDao.favPeli(idpeli, idU);;
-				pagDest = "fav.jsp";
+				pagDest = "home.jsp";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
