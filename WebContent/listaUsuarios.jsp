@@ -10,7 +10,13 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  	<link rel="stylesheet" type="text/css" href="CSS/PagIntEstilo.css">
-<title>Listado Usuarios</title>
+ 		<script language="javascript">
+
+	function confirmar() {
+	return confirm("¿Estás seguro de querer eliminar esta película? Esta acción no se puede deshacer.")
+}
+	</script>
+<title>Usuarios</title>
 </head>
 <body>
 	
@@ -30,9 +36,9 @@
 		</div>
 		
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="home.jsp">Home</a></li>
+			<li class="active"><a href="home.jsp">Películas</a></li>
 			<% if (session.getAttribute("rol").equals("admin")) { %>
-			<li><a href="listaUsuarios.jsp">Listado Usuarios</a></li>
+			<li><a href="listaUsuarios.jsp">Usuarios</a></li>
 		<% } %>
 		
 			<% if (session.getAttribute("rol").equals("admin")) { %>
@@ -50,7 +56,7 @@
 			
 				<!-- Tabla de datos -->
 	<table class="table table-striped">
-		<caption><b>Lista de Usuarios</b></caption>
+		<caption><b>Usuarios</b></caption>
 		<tr>
 			<th>Nombre</th>
 			<th>Apellidos</th>
@@ -72,7 +78,7 @@
 			<td><%=rs.getString("rol")%></td>
 		
 			<td><a href="ControladorUsu?opcion=e&idusuario=<%=rs.getInt("idusuario") %>"> <span class="glyphicon glyphicon-pencil"></span></a>
-			<a href="ControladorUsu?opcion=b&idusuario=<%=rs.getInt("idusuario") %>"><span class="glyphicon glyphicon-trash"></span></a></td>
+			<a href="ControladorUsu?opcion=b&idusuario=<%=rs.getInt("idusuario") %>" onclick="return confirmar()"><span class="glyphicon glyphicon-trash"></span></a></td>
 
 		</tr>
 

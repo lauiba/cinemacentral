@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+
+.btn {
+	background-color:black;
+	
+}
+
+
+table {
+	
+	opacity: 0.9;
+	font-style: color: white;
+	border: 2px white;
+	
+}
+
+tr, th, td {
+	background-color: black;
+	color: white;
+	text-align: center;
+	
+}
+
+tr, th, td {
+	background-color: black;
+	color: white;
+	text-align: center;
+	border: 2px solid black;
+
+
+	
+}
+.glyphicon {
+	
+	text-align:center;
+	color: white;
+	
+  }
+  
+  td {
+  font-size: 18px;
+  }
+
+

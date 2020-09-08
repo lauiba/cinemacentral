@@ -1,45 +1,49 @@
 @charset "ISO-8859-1";
 
-
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   top: 90%;
-   width: 100%;
-   background-color: black;
-   color: white;
-   text-align: right;
-}
-
 body {
 	background: url(../IMG/fondo-home-cc.jpg) no-repeat;
 	background-size: cover; 
-	background-color: #000000; 
+	background-color: #000000;
 	}
 
 	li:hover {
   background-color: #8B0000;
 }
 
-
-table {
+.btn {
 	background-color: black;
-	font-style: color: white;
 	
 }
 
-tr, th, td {
+#tusuario td {
+		border: none;
+		color: white;
+		text-align: center;
+}
+
+ #tadmin td, th {
 	background-color: black;
+	color: white;
+	text-align: center;
+	 
+} 
+
+#tfav td {
+	
+	border: none;
 	color: white;
 	text-align: center;
 }
 
+
+
+
 caption {
 	
-color: white;
-
+	color: white;
+	text-align: center;
 }
+
 
 form  {
 	background-color: black;
@@ -76,11 +80,11 @@ form label {
 	
 }
 
-a {
+a:link, a:visited {
 	color:white;
 }
 
-a:visited {
+a:hover, a:active {
 	color:white;
 }
 
@@ -94,14 +98,6 @@ a:hover{
 		 
 		 
 		 
-
-
-
-	
-
-
-
-
 
 
   
