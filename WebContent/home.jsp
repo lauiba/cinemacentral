@@ -11,6 +11,8 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  	<link rel="stylesheet" type="text/css" href="CSS/PagIntEstilo.css">
+ 	 <!-- <link rel="stylesheet" type="text/css" href="CSS/HomeUsuario.css">  -->	
+ 	
  	<script language="javascript">
 
 	function confirmar() {
@@ -37,12 +39,12 @@
 		</div>
 		
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="home.jsp">Home</a></li>
+			<li class="active"><a href="home.jsp">Películas</a></li>
 			<% if (session.getAttribute("rol").equals("usuario")) { %>
-			<li class="active"><a href="fav.jsp">Mis favoritas</a></li>
+			<li><a href="fav.jsp">Mis favoritas</a></li>
 			<% } %>
 			<% if (session.getAttribute("rol").equals("admin")) { %>
-			<li><a href="listaUsuarios.jsp">Listado Usuarios</a></li>
+			<li><a href="listaUsuarios.jsp">Usuarios</a></li>
 			<li><a href="altaPeli.jsp">Alta Película</a></li>
 			<% } %>
 	
@@ -58,7 +60,7 @@
 				
 	<% if (session.getAttribute("rol").equals("admin")) { %>
 	
-	<table class="table table-striped">
+	<table class="table table-striped" id="tadmin">
 		<caption><b>Lista de películas</b></caption>
 		<tr>
 			<th>Título</th>
@@ -92,8 +94,8 @@
 	<% } %>
 	
 	<% if (session.getAttribute("rol").equals("usuario")) { %>
-		
-	<table>
+	
+	<table class="table table-condensed" id="tusuario">
 	
 		<tr>
 		
@@ -102,9 +104,10 @@
 			while (rs.next()) {	
 		%>
 			
-			<td><%=rs.getString("titulo")%></td>
-			<td><a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>"><span class="glyphicon glyphicon-star-empty"></span></a></td>
-		
+		<td><%=rs.getString("titulo")%><br>
+		<a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-star"></span>Favorita</a></td>
+			
 			
 		<%
 			c++;
@@ -117,8 +120,10 @@
 		%>
 		
 		</tr>
-		
-	</table>		
+
+</table>
+	
+  
 		
 	<% } %>		
 	

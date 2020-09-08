@@ -7,9 +7,12 @@
 <head>
 	<title>Favoritas</title>
 	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 	<link rel="stylesheet" type="text/css" href="CSS/PagIntEstilo.css">
 </head>
 <body>
-	<h2 style="text-align: right">Bienvenid@ <%=session.getAttribute("nombre")%></h2>
 	
 			<!-- Conexion con la bbdd -->		
 	<%
@@ -19,24 +22,55 @@
 		ResultSet rs = st.executeQuery(query);
 	%>
 			<!-- Barra de navegacion -->
+			
+		<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    	<div class="navbar-header">	
+    	  <a class="navbar-brand" href="home.jsp">Cinema Central</a>
+		</div>
+		
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="home.jsp">Películas</a></li>
+			<% if (session.getAttribute("rol").equals("usuario")) { %>
+			<li><a href="fav.jsp">Mis favoritas</a></li>
+			<% } %>
+			
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="ControladorUsu?opcion=e&idusuario=<%=session.getAttribute("idusuario")%>"><span class="glyphicon glyphicon-user"></span> <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%></a></li>
+			<li><a href="Logout"><span class="glyphicon glyphicon-log-in"></span> Cerrar sesión</a></li>
+		</ul>
+		</div>
+	</nav>
 				
 			<!-- Tabla de datos -->
-	<table>
-		<caption><b>Lista de películas</b></caption>
-		<tr>
-			<th>Título</th>				
+	<table class="table table-condensed" id="tfav">
+	
+	<tr>
+		
+		<%	
+			int c = 0;
+			while (rs.next()) {	
+		%>
+			
+		<td><%=rs.getString("titulo")%><br>
+		<a href="#" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-star"></span>Quitar</a></td>
+			
+			
+		<%
+			c++;
+				if ((c % 3) == 0) {
+		%>
+			</tr><tr>
+		<%		
+				}
+			}
+		%>
+		
 		</tr>
 
-		<%
-			while (rs.next()) {
-		%>
-
-		<tr>
-			<td><%=rs.getString("titulo")%></td>
-					
-		</tr>		
-	<% } %>	
-	</table>			
+</table>		
 				
 				
 				
