@@ -50,12 +50,15 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#"><span class="glyphicon glyphicon-user"></span> <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%></a></li>
-			<li><a href="Logout"><span class="glyphicon glyphicon-log-in"></span>Cerrar sesión</a></li>
+			<li><a href="Logout"><span class="glyphicon glyphicon-log-in"></span> Cerrar sesión</a></li>
 		</ul>
 		</div>
 	</nav>
 	
 				<!-- Tabla de datos -->
+				
+	<% if (session.getAttribute("rol").equals("admin")) { %>
+	
 	<table class="table table-striped">
 		<caption><b>Lista de películas</b></caption>
 		<tr>
@@ -76,15 +79,9 @@
 			<td><%=rs.getString("genero")%></td>
 			<td><%=rs.getString("director")%></td>
 			<td><%=rs.getString("duracion")%></td>
-			<td><%=rs.getString("anyo")%></td>
-		<% if (session.getAttribute("rol").equals("usuario")) { %>
-			<td><a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>"><span class="glyphicon glyphicon-star-empty"></span></a></td>
-		<% } %>		
-		<% if (session.getAttribute("rol").equals("admin")) { %>
+			<td><%=rs.getString("anyo")%></td>		
 			<td><a href="ControladorPeli?opcion=e&idpeli=<%=rs.getInt("idpeli") %>"><span class="glyphicon glyphicon-pencil"></span></a>    
 			<a href="ControladorPeli?opcion=b&idpeli=<%=rs.getInt("idpeli") %>" onclick="return confirmar()"><span class="glyphicon glyphicon-trash"></span></a></td>
-		
-		<% } %>
 		</tr>
 
 		<%
@@ -93,7 +90,36 @@
 	
 	</table>
 	
+	<% } %>
+	
 	<% if (session.getAttribute("rol").equals("usuario")) { %>
+		
+	<table>
+	
+		<tr>
+		
+		<%	
+			int c = 0;
+			while (rs.next()) {	
+		%>
+			
+			<td><%=rs.getString("titulo")%></td>
+			<td><a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>"><span class="glyphicon glyphicon-star-empty"></span></a></td>
+		
+			
+		<%
+			c++;
+				if ((c % 3) == 0) {
+		%>
+			</tr><tr>
+		<%		
+				}
+			}
+		%>
+		
+		</tr>
+		
+	</table>		
 		
 	<% } %>		
 	
