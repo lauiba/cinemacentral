@@ -8,6 +8,7 @@ public class Peli {
 	private String director; 
 	private int duracion;
 	private int anyo;
+	private String foto;
 	
 	
 	public Peli() {
@@ -16,7 +17,7 @@ public class Peli {
 	}
 
 
-	public Peli(int idpeli, String titulo, String genero, String director, int duracion, int anyo) {
+	public Peli(int idpeli, String titulo, String genero, String director, int duracion, int anyo, String foto) {
 
 
 		super();
@@ -26,6 +27,7 @@ public class Peli {
 		this.director = director;
 		this.duracion = duracion;
 		this.anyo = anyo;
+		this.foto = foto;
 
 	}
 
@@ -88,14 +90,22 @@ public class Peli {
 	public void setAnyo(int anyo) {
 		this.anyo = anyo;
 	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 
 	@Override
 	public String toString() {
 		return "Peli [idpeli=" + idpeli + ", titulo=" + titulo + ", genero=" + genero + ", director=" + director
-				+ ", duracion=" + duracion + ", anyo=" + anyo + "]";
-
+				+ ", duracion=" + duracion + ", anyo=" + anyo + ", foto=" + foto + "]";
 	}
-	
+
 	
 }

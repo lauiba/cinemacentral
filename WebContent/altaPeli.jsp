@@ -49,6 +49,8 @@
 		<input type="number" name="duracion" required><br><br>
 		<label for="anyo">Año:</label><br>
 		<input type="number" name="anyo" required><br><br>
+		<label for="foto">Carátula:</label><br>
+		<input type="text" name="foto"><br><br>
 		<input type="submit" name="guardar" value="Guardar" class="w3-button w3-black w3-round-xxlarge">
 		<a href="home.jsp" >Cancelar</a>
 	</form>

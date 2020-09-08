@@ -29,7 +29,7 @@ public class PeliDAO {
 
 	
 	public void altaPeli(Peli p) throws SQLException {
-		String sql = "INSERT INTO pelis (idpeli, titulo, genero, director, duracion, anyo) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO pelis (idpeli, titulo, genero, director, duracion, anyo, foto) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
@@ -40,6 +40,7 @@ public class PeliDAO {
 		pst.setString(4, p.getDirector());
 		pst.setInt(5, p.getDuracion());
 		pst.setInt(6, p.getAnyo());
+		pst.setString(7, p.getFoto());
 		
 		pst.executeUpdate();
 		
@@ -69,7 +70,7 @@ public class PeliDAO {
 	
 	public void modificarPeli(Peli p) throws SQLException {
 
-		String sql = "UPDATE pelis SET titulo = ?, genero = ?, director = ?, duracion = ?, anyo = ? WHERE idpeli = ?";
+		String sql = "UPDATE pelis SET titulo = ?, genero = ?, director = ?, duracion = ?, anyo = ?, foto = ? WHERE idpeli = ?";
 		con = Conexion.getInstance().getConnection();
 		pst = con.prepareStatement(sql);
 		pst.setString(1, p.getTitulo());
@@ -77,8 +78,8 @@ public class PeliDAO {
 		pst.setString(3, p.getDirector());
 		pst.setInt(4, p.getDuracion());
 		pst.setInt(5, p.getAnyo());
-		pst.setInt(6, p.getIdpeli());  //solo mostrar idpeli sin posibilidad de editarlo
-		//---modificado orden segun orden query
+		pst.setString(6, p.getFoto());
+		pst.setInt(7, p.getIdpeli());
 		
 		pst.executeUpdate();
 		
@@ -120,6 +121,7 @@ public class PeliDAO {
 			p.setDirector(rs.getNString("director"));
 			p.setDuracion(rs.getInt("duracion"));
 			p.setAnyo(rs.getInt("anyo"));
+			p.setFoto(rs.getNString("foto"));
 			
 			
 		}

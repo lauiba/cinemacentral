@@ -95,6 +95,7 @@ public class ControladorPeli extends HttpServlet {
 		String director = request.getParameter("director");
 		int duracion = Integer.parseInt(request.getParameter("duracion"));
 		int anyo = Integer.parseInt(request.getParameter("anyo"));
+		String foto = request.getParameter("foto");
 		String opcion = request.getParameter("opcion");
 		int idpeli = 0;
 		
@@ -110,6 +111,7 @@ public class ControladorPeli extends HttpServlet {
 		p.setDirector(director);
 		p.setDuracion(duracion);
 		p.setAnyo(anyo);
+		p.setFoto(foto);
 
 		PeliDAO pelidao = new PeliDAO();
 

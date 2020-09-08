@@ -56,6 +56,8 @@ Peli p = (Peli) request.getAttribute("idpeli");
 		<input type="number" name="duracion" value="<%=p.getDuracion() %>"><br><br>
 		<label for="anyo">Año:</label><br>
 		<input type="number" name="anyo" value="<%=p.getAnyo()%>"><br><br>
+		<label for="foto">Carátula:</label><br>
+		<input type="text" name="foto" value="<%=p.getFoto()%>"><br><br>
 		<input type="hidden" name="opcion" value="e">
 		<input type="submit" name="guardar" value="Modificar" class="w3-button w3-black w3-round-xxlarge">
 		<a href="home.jsp" >Cancelar</a>

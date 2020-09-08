@@ -59,13 +59,14 @@
 	<% if (session.getAttribute("rol").equals("admin")) { %>
 	
 	<table class="table table-striped">
-		<caption><b>Lista de películas</b></caption>
+		<caption><center><b>Lista de películas</b></center></caption>
 		<tr>
 			<th>Título</th>
 			<th>Género</th>
 			<th>Director</th>
 			<th>Duración</th>
 			<th>Año</th>
+			<th>Foto</th>
 			<th>Acciones</th>	
 	</tr>
 
@@ -78,7 +79,8 @@
 			<td><%=rs.getString("genero")%></td>
 			<td><%=rs.getString("director")%></td>
 			<td><%=rs.getString("duracion")%></td>
-			<td><%=rs.getString("anyo")%></td>		
+			<td><%=rs.getString("anyo")%></td>
+			<td><%=rs.getString("foto")%></td>	
 			<td><a href="ControladorPeli?opcion=e&idpeli=<%=rs.getInt("idpeli") %>"><span class="glyphicon glyphicon-pencil"></span></a>    
 			<a href="ControladorPeli?opcion=b&idpeli=<%=rs.getInt("idpeli") %>" onclick="return confirmar()"><span class="glyphicon glyphicon-trash"></span></a></td>
 		</tr>
@@ -102,8 +104,9 @@
 			while (rs.next()) {	
 		%>
 			
-			<td><%=rs.getString("titulo")%></td>
-			<td><a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>"><span class="glyphicon glyphicon-star-empty"></span></a></td>
+			<td><img src="IMG/<%=rs.getString("foto")%>"><br><br>
+			<%=rs.getString("titulo")%>
+			<a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>"><span class="glyphicon glyphicon-star-empty"></span></a></td>
 		
 			
 		<%
