@@ -61,7 +61,7 @@
 	<% if (session.getAttribute("rol").equals("admin")) { %>
 	
 	<table class="table table-striped" id="tadmin">
-		<caption><b>Lista de películas</b></caption>
+		<caption><center><b>Lista de películas</b></center></caption>
 
 		<tr>
 			<th>Título</th>
@@ -110,7 +110,7 @@
 			<td><img src="IMG/<%=rs.getString("foto")%>"><br><br>
 			<%=rs.getString("titulo")%>
 			<a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>" class="btn btn-info btn-lg">
-        <span class="glyphicon glyphicon-star"></span>Favorita</a></td>
+        	<span class="glyphicon glyphicon-star"></span>Favorita</a></td>
 			
 		<%
 			c++;

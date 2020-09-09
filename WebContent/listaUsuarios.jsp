@@ -56,7 +56,7 @@
 			
 				<!-- Tabla de datos -->
 	<table class="table table-striped">
-		<caption><b>Usuarios</b></caption>
+		<caption><center><b>Usuarios</b></center></caption>
 		<tr>
 			<th>Nombre</th>
 			<th>Apellidos</th>

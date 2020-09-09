@@ -12,16 +12,15 @@ body {
 
 .btn {
 	background-color: black;
-	
 }
 
 #tusuario td {
-		border: none;
-		color: white;
-		text-align: center;
+	border: none;
+	color: white;
+	text-align: center;
 }
 
- #tadmin td, th {
+#tadmin td, th {
 	background-color: black;
 	color: white;
 	text-align: center;
@@ -31,15 +30,6 @@ body {
 #tfav td {
 	
 	border: none;
-	color: white;
-	text-align: center;
-}
-
-
-
-
-caption {
-	
 	color: white;
 	text-align: center;
 }
