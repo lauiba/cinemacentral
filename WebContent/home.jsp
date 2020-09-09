@@ -11,15 +11,13 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  	<link rel="stylesheet" type="text/css" href="CSS/PagIntEstilo.css">
- 	 <!-- <link rel="stylesheet" type="text/css" href="CSS/HomeUsuario.css">  -->	
  	
- 	<script language="javascript">
-
+ 	<script>
 	function confirmar() {
-
 	return confirm("¿Estás seguro de querer eliminar esta película? Esta acción no se puede deshacer.")
 }
-</script>
+	</script>
+	
 </head>
 <body>
 		
@@ -60,8 +58,8 @@
 				
 	<% if (session.getAttribute("rol").equals("admin")) { %>
 	
-	<table class="table table-striped" id="tadmin">
-		<caption><center><b>Lista de películas</b></center></caption>
+	<table class="table" id="tadmin">
+		<caption><b>Lista de películas</b></caption>
 
 		<tr>
 			<th>Título</th>
@@ -108,9 +106,10 @@
 		%>
 			
 			<td><img src="IMG/<%=rs.getString("foto")%>"><br><br>
-			<%=rs.getString("titulo")%>
-			<a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>" class="btn btn-info btn-lg">
-        	<span class="glyphicon glyphicon-star"></span>Favorita</a></td>
+			<%=rs.getString("titulo")%><br>
+			<a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>" class="btn btn-info btn-lg" id="botFav">
+	        <span class="glyphicon glyphicon-star"></span>Favorita</a></td>
+
 			
 		<%
 			c++;
@@ -127,6 +126,33 @@
 	</table>
 		
 	<% } %>		
+	
+	
+	<!-- :) botoncito scroll top -->
+	
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	
+	<script>
+
+	var mybutton = document.getElementById("myBtn");
+
+	window.onscroll = function() {scrollFunction()};
+
+	function scrollFunction() {
+  		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    	mybutton.style.display = "block";
+ 		 } else {
+    	mybutton.style.display = "none";
+  	}
+}
+
+
+	function topFunction() {
+  	document.body.scrollTop = 0;
+  	document.documentElement.scrollTop = 0;
+}
+	</script>
+	
 	
 </body>
 </html>

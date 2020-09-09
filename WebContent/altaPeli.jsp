@@ -20,9 +20,9 @@
 		</div>
 			
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="home.jsp">Home</a></li>
+			<li class="active"><a href="home.jsp">Películas</a></li>
 			<% if (session.getAttribute("rol").equals("admin")) { %>
-			<li><a href="listaUsuarios.jsp">Listado Usuarios</a></li>
+			<li><a href="listaUsuarios.jsp">Usuarios</a></li>
 		<% } %>
 		
 			<% if (session.getAttribute("rol").equals("admin")) { %>

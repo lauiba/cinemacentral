@@ -55,8 +55,8 @@
 	</nav>
 			
 				<!-- Tabla de datos -->
-	<table class="table table-striped">
-		<caption><center><b>Usuarios</b></center></caption>
+	<table class="table" id="tadusus">
+		<caption><b>Usuarios</b></caption>
 		<tr>
 			<th>Nombre</th>
 			<th>Apellidos</th>
