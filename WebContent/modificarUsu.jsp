@@ -25,19 +25,19 @@
 		</div>
 		
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="home.jsp">Home</a></li>
+			<li class="active"><a href="home.jsp">Películas</a></li>
+			<% if (session.getAttribute("rol").equals("usuario")) { %>
+			<li><a href="fav.jsp">Mis favoritas</a></li>
+			<% } %>
 			<% if (session.getAttribute("rol").equals("admin")) { %>
-			<li><a href="listaUsuarios.jsp">Listado Usuarios</a></li>
-		<% } %>
-		
-			<% if (session.getAttribute("rol").equals("admin")) { %>
+			<li><a href="listaUsuarios.jsp">Usuarios</a></li>
 			<li><a href="altaPeli.jsp">Alta Película</a></li>
-		<% } %>
+			<% } %>
 		
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			   <li><a href="#"><span class="glyphicon glyphicon-user"></span> <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%></a></li>
-			<li><a href="Logout"><span class="glyphicon glyphicon-log-in"></span>Cerrar sesión</a></li>
+			<li><a href="ControladorUsu?opcion=e&idusuario=<%=session.getAttribute("idusuario")%>"><span class="glyphicon glyphicon-user"></span> <%=session.getAttribute("nombre")%> - <%=session.getAttribute("rol")%></a></li>
+			<li><a href="Logout"><span class="glyphicon glyphicon-log-in"></span> Cerrar sesión</a></li>
 		</ul>
 		</div>
 		
