@@ -18,7 +18,7 @@
 	<%
 		Connection conn = Conexion.getInstance().getConnection();
 		Statement st = conn.createStatement();	
-	 	String query = "SELECT titulo FROM pelis WHERE idpeli IN (SELECT idpeli FROM fav WHERE idusuario = " + session.getAttribute("idusuario") + ")";
+	 	String query = "SELECT * FROM pelis WHERE idpeli IN (SELECT idpeli FROM fav WHERE idusuario = " + session.getAttribute("idusuario") + ")";
 		ResultSet rs = st.executeQuery(query);
 	%>
 			<!-- Barra de navegacion -->
@@ -53,8 +53,9 @@
 			while (rs.next()) {	
 		%>
 			
-		<td><%=rs.getString("titulo")%><br>
-		<a href="#" class="btn btn-info btn-lg">
+		<td><img src="IMG/<%=rs.getString("foto")%>"><br><br>
+		<h3><b><%=rs.getString("titulo")%></b></h3><br>
+		<a href="ControladorPeli?opcion=bf&idpeli=<%=rs.getInt("idpeli")%>&idusuario=<%=session.getAttribute("idusuario")%>" class="btn btn-info btn-lg">
         <span class="glyphicon glyphicon-star"></span>Quitar</a></td>
 			
 			

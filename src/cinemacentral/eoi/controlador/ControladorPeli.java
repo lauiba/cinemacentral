@@ -43,7 +43,12 @@ public class ControladorPeli extends HttpServlet {
 			idU = Integer.parseInt(request.getParameter("idusuario"));	
 			
 			break;	
+		case "bf":
+			idU = Integer.parseInt(request.getParameter("idusuario"));	
+		
+			break;	
 		}
+		
 		PeliDAO pDao = new PeliDAO();
 		Peli p = null;
 		
@@ -73,6 +78,15 @@ public class ControladorPeli extends HttpServlet {
 			try {
 				pDao.favPeli(idpeli, idU);;
 				pagDest = "home.jsp";
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			break; 
+		case "bf":
+			try {
+				pDao.borrarFav(idpeli, idU);;
+				pagDest = "fav.jsp";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
