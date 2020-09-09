@@ -4,6 +4,7 @@ body {
 	background: url(../IMG/fondo-home-cc.jpg) no-repeat;
 	background-size: cover; 
 	background-color: #000000;
+	background-attachment: fixed
 	}
 
 	li:hover {
@@ -18,15 +19,47 @@ body {
 #tusuario td {
 		border: none;
 		color: white;
+		width: 50%;
 		text-align: center;
+	
 }
 
- #tadmin td, th {
+/* tamaño predeterminado para todas las img :) */
+
+img {
+	
+	width: 300px;
+	height: 400px;
+}
+
+/* tabla lista admin */
+
+ #tadmin  {
 	background-color: black;
 	color: white;
 	text-align: center;
 	 
 } 
+
+#tadmin th {
+	text-align: center;
+}
+
+
+
+#tadusus {
+	
+	background-color: black;
+	color: white;
+	text-align: center;
+	
+}
+
+#tadusus th {
+	text-align: center;
+}
+
+/*tabla favoritas usuarios */
 
 #tfav td {
 	
@@ -35,7 +68,7 @@ body {
 	text-align: center;
 }
 
-
+/* fin tablas :) */
 
 
 caption {
@@ -66,6 +99,7 @@ form label {
 	color:white;
 }
 
+
 .reg{
 		font-family: 'Playfair Display';
 		font-size:20px;
@@ -80,6 +114,8 @@ form label {
 	
 }
 
+/* los enlaces de los iconos siempre se muestran de color blanco */
+
 a:link, a:visited {
 	color:white;
 }
@@ -88,13 +124,38 @@ a:hover, a:active {
 	color:white;
 }
 
-/*
-a:hover{
-	color:yellow;
+#botFav: hoover {
+	color: red;
 }
-*/
+
+/* botoncito scroll :) */
+
+
+#myBtn {
+	
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #800000;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #000000;
+
+}
+
+
 .w3-btn
-		 {width:100px; font-size: 8px; display: inline-block;}
+		{width:100px; font-size: 8px; display: inline-block;}
 		 
 		 
 		 

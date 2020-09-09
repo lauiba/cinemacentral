@@ -55,7 +55,7 @@
 	</nav>
 			
 				<!-- Tabla de datos -->
-	<table class="table table-striped">
+	<table class="table" id="tadusus">
 		<caption><b>Usuarios</b></caption>
 		<tr>
 			<th>Nombre</th>
