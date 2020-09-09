@@ -106,9 +106,10 @@
 		%>
 			
 			<td><img src="IMG/<%=rs.getString("foto")%>"><br><br>
-			<%=rs.getString("titulo")%><br>
+			<h3><b><%=rs.getString("titulo")%></b></h3><br>
 			<a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>" class="btn btn-info btn-lg" id="botFav">
-        <span class="glyphicon glyphicon-star"></span>Favorita</a></td>
+	        <span class="glyphicon glyphicon-star"></span>Favorita</a></td>
+
 			
 		<%
 			c++;

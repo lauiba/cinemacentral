@@ -129,7 +129,7 @@ public class PeliDAO {
 		return p;
 	}
 
-	    public void favPeli(int idpeli, int idusuario) throws SQLException {
+	public void favPeli(int idpeli, int idusuario) throws SQLException {
 		
 		String sql = "INSERT INTO fav (idpeli, idusuario) VALUES (?, ?)";
 		con = Conexion.getInstance().getConnection();
@@ -144,6 +144,19 @@ public class PeliDAO {
 		con.close();
 		
 	}
+	    
+	public void borrarFav(int idpeli, int idusuario) throws SQLException {
+
+		String sql = "DELETE FROM fav WHERE idpeli = ? AND idusuario = ?";
+		con = Conexion.getInstance().getConnection();
+		pst = con.prepareStatement(sql);
+		pst.setInt(1, idpeli);
+		pst.setInt(2, idusuario);
+			
+		pst.executeUpdate();
+			
+
+		}
 	
 	
 }

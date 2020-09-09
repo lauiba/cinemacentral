@@ -13,16 +13,19 @@ body {
 
 .btn {
 	background-color: black;
-	
+
 }
 
 #tusuario td {
-		border: none;
-		color: white;
-		width: 50%;
-		text-align: center;
-		
-	}
+	border: none;
+	color: #a90104;
+	width: 50%;
+	text-align: center;
+	text-shadow: 2px 2px #000000;
+
+}
+
+#tadmin tr:nth-child(even){background-color: #212221;}
 
 /* tamaño predeterminado para todas las img :) */
 
@@ -34,8 +37,8 @@ img {
 
 /* tabla lista admin */
 
- #tadmin  {
-	background-color: black;
+#tadmin  {
+	background-color: #0c0c0c;
 	color: white;
 	text-align: center;
 	 
@@ -43,38 +46,48 @@ img {
 
 #tadmin th {
 	text-align: center;
+	color: #a90104;
+	font-size: 17px;
+	text-shadow: 1px 1px #ffffff;
 }
 
 
 
 #tadusus {
 	
-	background-color: black;
+	background-color: #0c0c0c;
 	color: white;
 	text-align: center;
 	
 }
 
+#tadusus tr:nth-child(even){background-color: #212221;}
+
 #tadusus th {
 	text-align: center;
+	color: #a90104;
+	font-size: 17px;
+	text-shadow: 1px 1px #ffffff;
 }
 
 /*tabla favoritas usuarios */
 
 #tfav td {
-	
 	border: none;
-	color: white;
+	color: #a90104;
+	width: 50%;
 	text-align: center;
+	text-shadow: 2px 2px #000000;
 }
 
 /* fin tablas :) */
 
 
 caption {
-	
+	font-size:25px;
 	color: white;
 	text-align: center;
+	text-shadow: 2px 2px #aa0100;
 }
 
 
@@ -135,8 +148,8 @@ a:hover, a:active {
 	
   display: none;
   position: fixed;
-  bottom: 100px;
-  right: 30px;
+  bottom: 10px;
+  right: 100px;
   z-index: 99;
   font-size: 18px;
   border: none;
