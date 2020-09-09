@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 09-09-2020 a las 16:26:23
+-- Tiempo de generación: 09-09-2020 a las 20:43:47
 -- Versión del servidor: 8.0.21
 -- Versión de PHP: 7.2.24-0ubuntu0.18.04.6
 
@@ -37,7 +37,9 @@ CREATE TABLE `fav` (
 --
 
 INSERT INTO `fav` (`idpeli`, `idusuario`) VALUES
-(0, 3);
+(0, 3),
+(3, 3),
+(4, 3);
 
 -- --------------------------------------------------------
 
@@ -82,7 +84,8 @@ INSERT INTO `pelis` (`idpeli`, `titulo`, `genero`, `director`, `duracion`, `anyo
 (19, 'Los Vengadores: Infinity War', 'Ciencia ficción', 'Anthony Russo y Joe Russo', 149, 2018, 'v_infinity.jpg'),
 (20, 'Ant-Man y la Avispa', 'Ciencia ficción', 'Peyton Reed', 118, 2018, 'ant_man2.jpg'),
 (21, 'Los Vengadores: Endgame', 'Ciencia ficción', 'Anthony Russo y Joe Russo', 181, 2019, 'v_endgame.jpg'),
-(22, 'Spider-Man: Lejos de casa', 'Ciencia ficción', 'Jon Watts', 130, 2019, 'spider_man2.jpg');
+(22, 'Spider-Man: Lejos de casa', 'Ciencia ficción', 'Jon Watts', 130, 2019, 'spider_man2.jpg'),
+(23, 'Ghostbusters', 'Ciencia ficción y comedia', 'ivan reitman', 120, 1984, 'iron_man_3.jpg');
 
 -- --------------------------------------------------------
 
@@ -104,9 +107,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idusuario`, `nombre`, `apellidos`, `correo`, `pass`, `rol`) VALUES
-(1, 'Sergio', 'Mateos', 'sergiom@gmail.com', '1234', 'admin'),
+(1, 'Sergio', 'Mateos', 'sergiom@gmail.com', '12345', 'admin'),
 (2, 'Laura', 'Ibarra', 'laura@gmail.com', '1234', 'admin'),
-(3, 'Lian', 'López', 'lianl@gmail.com', '1234', 'usuario');
+(3, 'Lian', 'López', 'lianl@gmail.com', '12345', 'usuario');
 
 --
 -- Índices para tablas volcadas
