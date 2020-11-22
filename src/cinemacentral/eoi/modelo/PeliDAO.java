@@ -122,7 +122,8 @@ public class PeliDAO {
 			p.setDuracion(rs.getInt("duracion"));
 			p.setAnyo(rs.getInt("anyo"));
 			p.setFoto(rs.getNString("foto"));
-			
+			p.setTrailer(rs.getNString("trailer"));
+			p.setDescripcion(rs.getNString("descripcion"));
 			
 		}
 		

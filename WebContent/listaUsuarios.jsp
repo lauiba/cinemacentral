@@ -13,7 +13,7 @@
  		<script language="javascript">
 
 	function confirmar() {
-	return confirm("¿Estás seguro de querer eliminar esta película? Esta acción no se puede deshacer.")
+	return confirm("¿Estás seguro de querer eliminar este usuario? Esta acción no se puede deshacer.")
 }
 	</script>
 <title>Usuarios</title>

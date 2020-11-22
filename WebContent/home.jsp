@@ -105,8 +105,8 @@
 			while (rs.next()) {	
 		%>
 			
-			<td><img src="IMG/<%=rs.getString("foto")%>"><br><br>
-			<h3><b><%=rs.getString("titulo")%></b></h3><br>
+			<td><a href="ControladorPeli?opcion=d&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>"><img src="IMG/<%=rs.getString("foto")%>"></a><br><br>
+			<h3><a href="ControladorPeli?opcion=d&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>"><b><%=rs.getString("titulo")%></b></a></h3><br>
 			<a href="ControladorPeli?opcion=f&idpeli=<%=rs.getInt("idpeli") %>&idusuario=<%=session.getAttribute("idusuario")%>" class="btn btn-info btn-lg" id="botFav">
 	        <span class="glyphicon glyphicon-star"></span>Favorita</a></td>
 

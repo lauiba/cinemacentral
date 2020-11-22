@@ -32,6 +32,9 @@
 		body{
 		background: url(../IMG/fondo-home-cc.jpg) no-repeat;
 		background-size: cover;
+		background-color: #000000;
+		background-attachment: fixed
+		
 		}	
 
 		form{

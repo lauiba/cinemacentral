@@ -6,6 +6,12 @@ body {
 	background-color: #000000;
 	background-attachment: fixed
 	}
+	
+	#tabpeli {
+	background-color: #0c0c0c;
+	color: white;
+	
+}
 
 	li:hover {
   background-color: #8B0000;
@@ -15,6 +21,17 @@ body {
 	background-color: black;
 
 }
+
+/* con esto se ajusta el contenido al centro manteniendo
+	mismos márgenes a izda y derecha */
+	
+
+#tusuario {
+	
+	display: flex;
+	justify-content: space-around;
+}
+/*  ^  11/09/2020 ^ */ 
 
 #tusuario td {
 	border: none;
@@ -52,12 +69,13 @@ img {
 }
 
 
-
 #tadusus {
 	
 	background-color: #0c0c0c;
-	color: white;
+	color: white; 
 	text-align: center;
+
+}
 	
 }
 
@@ -71,6 +89,15 @@ img {
 }
 
 /*tabla favoritas usuarios */
+/* con esto se ajusta el contenido al centro manteniendo
+	mismos márgenes a izda y derecha */
+
+#tfav {
+	display: flex;
+	justify-content: space-around;
+}
+
+/*  ^  11/09/2020 ^ */ 
 
 #tfav td {
 	border: none;
@@ -80,7 +107,10 @@ img {
 	text-shadow: 2px 2px #000000;
 }
 
+
+
 /* fin tablas :) */
+
 
 
 caption {

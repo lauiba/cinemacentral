@@ -9,6 +9,8 @@ public class Peli {
 	private int duracion;
 	private int anyo;
 	private String foto;
+	private String trailer;
+	private String descripcion;
 	
 	
 	public Peli() {
@@ -17,7 +19,7 @@ public class Peli {
 	}
 
 
-	public Peli(int idpeli, String titulo, String genero, String director, int duracion, int anyo, String foto) {
+	public Peli(int idpeli, String titulo, String genero, String director, int duracion, int anyo, String foto, String trailer, String descripcion) {
 
 
 		super();
@@ -28,6 +30,8 @@ public class Peli {
 		this.duracion = duracion;
 		this.anyo = anyo;
 		this.foto = foto;
+		this.trailer = trailer;
+		this.descripcion = descripcion;
 
 	}
 
@@ -99,12 +103,34 @@ public class Peli {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	
+	
+
+
+	public String getTrailer() {
+		return trailer;
+	}
+
+
+	public void setTrailer(String trailer) {
+		this.trailer = trailer;
+	}
+
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
 
 	@Override
 	public String toString() {
 		return "Peli [idpeli=" + idpeli + ", titulo=" + titulo + ", genero=" + genero + ", director=" + director
-				+ ", duracion=" + duracion + ", anyo=" + anyo + ", foto=" + foto + "]";
+				+ ", duracion=" + duracion + ", anyo=" + anyo + ", foto=" + foto + ", trailer=" + trailer + ", descripcion=" + descripcion + "]";
 	}
 
 	

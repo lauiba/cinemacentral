@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import cinemacentral.eoi.modelo.Peli;
 import cinemacentral.eoi.modelo.PeliDAO;
@@ -65,6 +66,24 @@ public class ControladorPeli extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+			
+		// 23/10/2020 - 26/10/2020 -->
+			
+		case "d":
+			try {
+				p= pDao.getPeli(idpeli);
+				request.setAttribute("idpeli", p);
+				HttpSession session = request.getSession();
+				session.setAttribute("idpeli", p.getIdpeli());
+				session.setAttribute("titulo", p.getTitulo());
+				session.setAttribute("anyo", p.getAnyo());
+				pagDest = "FichaPeli.jsp";
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+			
 		case "b":
 			try {
 				pDao.borrarPeli(idpeli);
